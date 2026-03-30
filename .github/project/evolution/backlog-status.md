@@ -22,9 +22,9 @@ Cross-reference of backlog items and their current state.
 
 | ID | Title | Status | Backlog Item | Related ADRs | Notes |
 | --- | --- | --- | --- | --- | --- |
-| FR-001 | Publish clear hero and services narrative | Ready | [FR-001.md](backlog-items/FR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Home value proposition and services clarity. |
-| FR-002 | Publish schema-backed project listing | Ready | [FR-002.md](backlog-items/FR-002.md) | [ADR-BP-002](adr/0002-data-contracts-before-dynamics.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Stable project cards backed by schema validation. |
-| FR-003 | Deliver reliable contact conversion path | Ready | [FR-003.md](backlog-items/FR-003.md) | [ADR-BP-001](adr/0001-static-first-baseline.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Navigation and contact CTA behavior coverage. |
+| FR-001 | Publish consultant-focused hero and services narrative | Ready | [FR-001.md](backlog-items/FR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Personal B2B consultant positioning, services clarity, and direct CTA intent. |
+| FR-002 | Publish schema-backed consultant project listing | Ready | [FR-002.md](backlog-items/FR-002.md) | [ADR-BP-002](adr/0002-data-contracts-before-dynamics.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Early-stage portfolio proof using problem-solution-outcome cards. |
+| FR-003 | Deliver reliable consultant contact conversion path | Ready | [FR-003.md](backlog-items/FR-003.md) | [ADR-BP-001](adr/0001-static-first-baseline.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Clear consultation request route from nav and CTAs. |
 | FR-004 | Publish display-only reviews section | Idea | [FR-004.md](backlog-items/FR-004.md) | [ADR-BP-002](adr/0002-data-contracts-before-dynamics.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Phase 2 — deferred; no real review content in Phase 1. |
 
 ## Quality Requirements (QR-*)

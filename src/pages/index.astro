@@ -3,11 +3,175 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Brand Page">
-  <section>
-    <h1>Professional Brand Presence</h1>
+  <section class="hero" aria-labelledby="hero-title">
+    <p class="eyebrow">AI and Automation Consulting</p>
+    <h1 id="hero-title">I help small businesses automate the work that slows them down.</h1>
+    <p class="intro">
+      I am a consultant focused on AI, automation, and software development for
+      small business teams. I identify bottlenecks, build practical systems, and
+      deliver solutions your team can actually use day to day.
+    </p>
+    <div class="actions">
+      <a class="cta-primary" href="/contact">Book a Consultation</a>
+      <a class="cta-secondary" href="/projects">View Projects</a>
+    </div>
+  </section>
+
+  <section class="services" aria-label="Core services">
+    <article class="service">
+      <h2>Workflow Automation</h2>
+      <p>
+        Replace manual repetitive tasks with automations that save time,
+        reduce errors, and free your team to focus on higher-value work.
+      </p>
+    </article>
+    <article class="service">
+      <h2>AI-Enabled Operations</h2>
+      <p>
+        Apply AI where it creates real business value, from smarter internal
+        processes to faster decision support and better service delivery.
+      </p>
+    </article>
+    <article class="service">
+      <h2>Custom Software Solutions</h2>
+      <p>
+        Design and build focused tools that solve specific business problems,
+        integrate with your workflow, and scale as your operations grow.
+      </p>
+    </article>
+  </section>
+
+  <section class="highlight" aria-label="Primary offer summary">
+    <h2>Clear process. Practical delivery. Measurable improvement.</h2>
     <p>
-      This baseline page is the Phase 1 implementation start and supports CI and
-      deployment verification.
+      If your business has operational friction, I can help map the problem,
+      implement the right solution, and move you toward faster and cleaner
+      execution.
     </p>
   </section>
+
+  <style>
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      border-radius: 1.2rem;
+      padding: clamp(1.35rem, 2vw, 2.2rem);
+      box-shadow: 0 14px 30px rgb(35 32 25 / 7%);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.6rem;
+      color: var(--brand-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 18ch;
+      font-size: clamp(2.1rem, 5vw, 3.3rem);
+      line-height: 1.05;
+      text-wrap: balance;
+    }
+
+    .intro {
+      max-width: 60ch;
+      margin: 1rem 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 1.04rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.4rem;
+    }
+
+    .cta-primary,
+    .cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.8rem;
+      border-radius: 0.75rem;
+      padding: 0 1rem;
+      font-weight: 700;
+    }
+
+    .cta-primary {
+      background: var(--brand);
+      color: #f8fcfb;
+    }
+
+    .cta-primary:hover,
+    .cta-primary:focus-visible {
+      background: var(--brand-dark);
+      outline: none;
+    }
+
+    .cta-secondary {
+      border: 1px solid var(--stroke);
+      background: #fff;
+    }
+
+    .cta-secondary:hover,
+    .cta-secondary:focus-visible {
+      background: #f6f9f8;
+      outline: none;
+    }
+
+    .services {
+      margin-top: 1.3rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .service {
+      border: 1px solid var(--stroke);
+      background: #fff;
+      border-radius: 0.95rem;
+      padding: 1rem;
+    }
+
+    .service h2 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .service p {
+      margin: 0.65rem 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.97rem;
+    }
+
+    .highlight {
+      margin-top: 1.1rem;
+      border-left: 5px solid var(--brand);
+      padding: 0.3rem 0 0.3rem 1rem;
+    }
+
+    .highlight h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      text-wrap: balance;
+    }
+
+    .highlight p {
+      margin: 0.5rem 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 900px) {
+      .services {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </BaseLayout>
