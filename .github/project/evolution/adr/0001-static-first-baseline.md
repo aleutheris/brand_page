@@ -1,0 +1,45 @@
+# ADR-BP-001: Static-First Baseline
+
+## Workflow
+
+- Drafted by engineering and accepted for Phase 1 baseline.
+- Stored as standalone ADR for lifecycle tracking.
+
+Status: Accepted
+Date: 2026-03-19
+Owners: Engineering
+
+## Context
+
+The project needs a low-risk baseline to deliver a professional brand site quickly while preserving maintainability and future extension paths.
+
+## Decision
+
+- Build with static-first rendering and repository-local content.
+- Defer dynamic services until clear product need.
+
+## Alternatives Considered
+
+- Option A: Start with dynamic CMS/API-backed architecture from day one.
+- Option B: Static-first baseline with explicit seams for future dynamic migration.
+
+## Consequences
+
+- Positive: Lower complexity, faster delivery, simpler operations.
+- Negative: Dynamic workflows are deferred to later phases.
+- Risks: Future migration effort if dynamic needs emerge earlier than expected.
+
+## Verification
+
+- CI and deployment remain deterministic for static output.
+- Core routes build and render correctly in baseline checks.
+
+## Rollback
+
+- If constraints change, introduce adapter seams and evolve to dynamic services incrementally.
+
+## Links
+
+- Related requirement(s): FR-001, FR-002, FR-003, OR-001
+- Related ICR(s): n/a
+- Related PR(s): n/a

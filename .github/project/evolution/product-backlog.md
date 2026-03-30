@@ -29,6 +29,7 @@ User-outcome-oriented backlog for planned and in-progress work.
 - QR-001 | Enforce CI quality gate baseline | Priority: High | Item: `backlog-items/QR-001.md`
 - OR-001 | Automate GitHub Pages deployment | Priority: High | Item: `backlog-items/OR-001.md`
 - CR-001 | Enforce contract change approval workflow | Priority: Medium | Item: `backlog-items/CR-001.md`
+- FR-004 | Publish display-only reviews section | Priority: Medium | Item: `backlog-items/FR-004.md` | Phase 2 idea
 
 ## Phase 1 Execution Sequence
 

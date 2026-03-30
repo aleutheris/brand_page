@@ -121,6 +121,7 @@ Code cohesion defaults (required unless explicitly overridden with rationale):
 ## 8. Evolution Tracking
 
 - Decision cadence: record ADRs for cross-cutting, contested, or long-lived architectural decisions.
+- ADR recording rule: one file per ADR under `.github/project/evolution/adr/`; `.github/project/evolution/design-plan.md` is an index only.
 - Review cadence for project instructions: review monthly or when phase changes.
 - Requirement ID allocation: Engineering owner allocates and approves new `FR-*`, `QR-*`, `OR-*`, `CR-*` IDs.
 - Backlog item ownership: feature owner creates and updates backlog item artifacts.
@@ -141,7 +142,7 @@ Project-specific relevance hints (non-authoritative):
 
 - Usually referenced for planning and implementation context:
   - `.github/project/tech-stack.md`
-  - `.github/project/design-plan.md`
+  - `.github/project/evolution/design-plan.md`
 - On-demand for execution tracking and historical context:
   - `.github/project/evolution/` artifacts
   - `.github/project/learnings/` artifacts

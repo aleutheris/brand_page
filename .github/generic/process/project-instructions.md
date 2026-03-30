@@ -85,6 +85,10 @@ Create the following structure when the project starts for the first time:
   - Naming: `0001-decision-title.md`, `0002-decision-title.md`, etc.
   - Template: `.github/generic/templates/adr.template.md`
 
+- `.github/project/evolution/design-plan.md`
+  - ADR index only (no embedded full ADR content).
+  - Must list and link ADR files under `.github/project/evolution/adr/`.
+
 - `.github/project/evolution/backlog-items/`
   - Holds individual backlog item files, one per requirement or feature.
   - Naming: Use requirement IDs as filenames: `FR-001.md`, `FR-002.md`, `QR-001.md`, `OR-001.md`, `CR-001.md`

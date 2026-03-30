@@ -22,30 +22,31 @@ Cross-reference of backlog items and their current state.
 
 | ID | Title | Status | Backlog Item | Related ADRs | Notes |
 | --- | --- | --- | --- | --- | --- |
-| FR-001 | Publish clear hero and services narrative | Ready | [FR-001.md](backlog-items/FR-001.md) | N/A | Home value proposition and services clarity. |
-| FR-002 | Publish schema-backed project listing | Ready | [FR-002.md](backlog-items/FR-002.md) | N/A | Stable project cards backed by schema validation. |
-| FR-003 | Deliver reliable contact conversion path | Ready | [FR-003.md](backlog-items/FR-003.md) | N/A | Navigation and contact CTA behavior coverage. |
+| FR-001 | Publish clear hero and services narrative | Ready | [FR-001.md](backlog-items/FR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Home value proposition and services clarity. |
+| FR-002 | Publish schema-backed project listing | Ready | [FR-002.md](backlog-items/FR-002.md) | [ADR-BP-002](adr/0002-data-contracts-before-dynamics.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Stable project cards backed by schema validation. |
+| FR-003 | Deliver reliable contact conversion path | Ready | [FR-003.md](backlog-items/FR-003.md) | [ADR-BP-001](adr/0001-static-first-baseline.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Navigation and contact CTA behavior coverage. |
+| FR-004 | Publish display-only reviews section | Idea | [FR-004.md](backlog-items/FR-004.md) | [ADR-BP-002](adr/0002-data-contracts-before-dynamics.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Phase 2 — deferred; no real review content in Phase 1. |
 
 ## Quality Requirements (QR-*)
 
 | ID | Title | Status | Backlog Item | Related ADRs | Notes |
 | --- | --- | --- | --- | --- | --- |
-| QR-001 | Enforce CI quality gate baseline | Ready | [QR-001.md](backlog-items/QR-001.md) | N/A | Build, typecheck, lint, and formatting are merge blockers. |
+| QR-001 | Enforce CI quality gate baseline | Ready | [QR-001.md](backlog-items/QR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md) | Build, typecheck, lint, and formatting are merge blockers. |
 
 ## Operational Requirements (OR-*)
 
 | ID | Title | Status | Backlog Item | Related ADRs | Notes |
 | --- | --- | --- | --- | --- | --- |
-| OR-001 | Automate GitHub Pages deployment | Ready | [OR-001.md](backlog-items/OR-001.md) | N/A | GitHub Actions deploys to gh-pages as default release flow. |
+| OR-001 | Automate GitHub Pages deployment | Ready | [OR-001.md](backlog-items/OR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md) | GitHub Actions deploys to gh-pages as default release flow. |
 
 ## Compliance/Constraint Requirements (CR-*)
 
 | ID | Title | Status | Backlog Item | Related ADRs | Notes |
 | --- | --- | --- | --- | --- | --- |
-| CR-001 | Enforce contract change approval workflow | Ready | [CR-001.md](backlog-items/CR-001.md) | N/A | Breaking contract changes require approved ICR. |
+| CR-001 | Enforce contract change approval workflow | Ready | [CR-001.md](backlog-items/CR-001.md) | [ADR-BP-002](adr/0002-data-contracts-before-dynamics.md) | Breaking contract changes require approved ICR. |
 
 ## Notes
 
-- Current planning source: `.github/project/design-plan.md`.
+- Current planning source: `.github/project/evolution/design-plan.md`.
 - Backlog item files under `.github/project/evolution/backlog-items/` are static requirement records.
 - Execution order: `QR-001` + `OR-001` -> `FR-001` -> `FR-002` -> `FR-003` with `CR-001` active as governance gate.

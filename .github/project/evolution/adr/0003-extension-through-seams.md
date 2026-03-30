@@ -1,0 +1,45 @@
+# ADR-BP-003: Extension Through Seams
+
+## Workflow
+
+- Drafted by engineering and accepted as modularity baseline.
+- Stored as standalone ADR for lifecycle tracking.
+
+Status: Accepted
+Date: 2026-03-19
+Owners: Engineering
+
+## Context
+
+The project will likely transition from static-only behavior to richer workflows. Tight coupling between presentation and data/transport details would increase rewrite risk.
+
+## Decision
+
+- Isolate data access and interaction logic behind feature-local adapters.
+- Keep presentation components independent from persistence and transport details.
+
+## Alternatives Considered
+
+- Option A: Couple UI directly to data structures and transport details.
+- Option B: Introduce explicit adapters and boundaries per vertical slice.
+
+## Consequences
+
+- Positive: Lower future refactor cost, better testability, clearer boundaries.
+- Negative: Slightly more initial abstraction overhead.
+- Risks: Over-abstraction if applied indiscriminately.
+
+## Verification
+
+- Slice-level behavior remains stable when adapter implementations change.
+- Contract tests confirm boundary compatibility.
+
+## Rollback
+
+- Collapse specific seams only where proven unnecessary and low-risk.
+
+## Links
+
+- Related requirement(s): FR-001, FR-002, FR-003, CR-001
+- Related ICR(s): n/a
+- Related PR(s): n/a
