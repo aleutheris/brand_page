@@ -31,13 +31,13 @@ Cross-reference of backlog items and their current state.
 
 | ID | Title | Status | Backlog Item | Related ADRs | Notes |
 | --- | --- | --- | --- | --- | --- |
-| QR-001 | Enforce CI quality gate baseline | Ready | [QR-001.md](backlog-items/QR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md) | Build, typecheck, lint, and formatting are merge blockers. |
+| QR-001 | Enforce CI quality gate baseline | In Progress | [QR-001.md](backlog-items/QR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md) | Workflows and local gates are green; branch protection merge blockers pending repo settings. |
 
 ## Operational Requirements (OR-*)
 
 | ID | Title | Status | Backlog Item | Related ADRs | Notes |
 | --- | --- | --- | --- | --- | --- |
-| OR-001 | Automate GitHub Pages deployment | Ready | [OR-001.md](backlog-items/OR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md) | GitHub Actions deploys to gh-pages as default release flow. |
+| OR-001 | Automate GitHub Pages deployment | In Progress | [OR-001.md](backlog-items/OR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md) | Deployment workflow implemented; first successful Pages run and Pages source verification pending. |
 
 ## Compliance/Constraint Requirements (CR-*)
 
