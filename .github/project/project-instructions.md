@@ -128,6 +128,7 @@ Code cohesion defaults (required unless explicitly overridden with rationale):
 
 Current tracking artifacts:
 
+- Requirements: `.github/project/evolution/requirements/`
 - ADR notes: `.github/project/evolution/adr/`
 - Backlog status: `.github/project/evolution/backlog-status.md`
 - Product backlog: `.github/project/evolution/product-backlog.md`
