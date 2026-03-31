@@ -1,0 +1,162 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const reviews = (await getCollection("reviews"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(({ id, data }) => ({ id, ...data }));
+---
+
+<BaseLayout title="Reviews">
+  <section class="intro" aria-labelledby="reviews-title">
+    <p class="eyebrow">Client Feedback</p>
+    <h1 id="reviews-title">What clients say about working together</h1>
+    <p>
+      These are real outcomes shared by clients after delivery. Social proof
+      matters, and these results represent the kind of practical impact I aim
+      for in every engagement.
+    </p>
+  </section>
+
+  <section aria-label="Review cards" class="cards">
+    {
+      reviews.map((review) => (
+        <article class="card" aria-labelledby={`${review.id}-name`}>
+          <blockquote>
+            <p class="review-text">{review.reviewText}</p>
+          </blockquote>
+          <footer>
+            <p id={`${review.id}-name`} class="reviewer-name">
+              {review.reviewerName}
+            </p>
+            {review.projectRef && (
+              <p class="project-ref">{review.projectRef}</p>
+            )}
+          </footer>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="cta" aria-label="Contact call to action">
+    <h2>Ready to get results like these?</h2>
+    <p>
+      A short discovery call is all it takes to map your biggest automation
+      opportunity and identify a practical next step.
+    </p>
+    <a href="/contact">Start the conversation</a>
+  </section>
+
+  <style>
+    .intro p {
+      max-width: 64ch;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--brand-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0.55rem 0 0.75rem;
+      max-width: 22ch;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.1;
+      text-wrap: balance;
+    }
+
+    .cards {
+      display: grid;
+      gap: 0.9rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 1.3rem;
+    }
+
+    .card {
+      border: 1px solid var(--stroke);
+      border-radius: 1rem;
+      background: #fff;
+      padding: 1rem 1rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    blockquote {
+      margin: 0;
+    }
+
+    .review-text {
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    footer {
+      margin-top: 0.9rem;
+      border-top: 1px solid var(--stroke);
+      padding-top: 0.65rem;
+    }
+
+    .reviewer-name {
+      margin: 0;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .project-ref {
+      margin: 0.2rem 0 0;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .cta {
+      margin-top: 1.2rem;
+      border-left: 5px solid var(--brand);
+      padding: 0.25rem 0 0.25rem 1rem;
+    }
+
+    .cta h2 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .cta p {
+      margin: 0.5rem 0 0.85rem;
+      max-width: 62ch;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .cta a {
+      display: inline-flex;
+      min-height: 2.8rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.75rem;
+      padding: 0 1rem;
+      font-weight: 700;
+      background: var(--brand);
+      color: #f8fcfb;
+    }
+
+    .cta a:hover,
+    .cta a:focus-visible {
+      background: var(--brand-dark);
+      outline: none;
+    }
+
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

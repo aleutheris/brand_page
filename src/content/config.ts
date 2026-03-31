@@ -11,6 +11,17 @@ const projects = defineCollection({
   }),
 });
 
+const reviews = defineCollection({
+  type: "data",
+  schema: z.object({
+    reviewerName: z.string().min(2),
+    reviewText: z.string().min(20),
+    projectRef: z.string().optional(),
+    order: z.number().int().nonnegative(),
+  }),
+});
+
 export const collections = {
   projects,
+  reviews,
 };
