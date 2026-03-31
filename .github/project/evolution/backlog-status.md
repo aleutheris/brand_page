@@ -22,28 +22,28 @@ Cross-reference of backlog items and their current state.
 
 | ID | Title | Status | Backlog Item | Related ADRs | Notes |
 | --- | --- | --- | --- | --- | --- |
-| FR-001 | Publish consultant-focused hero and services narrative | Ready | [FR-001.md](backlog-items/FR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Personal B2B consultant positioning, services clarity, and direct CTA intent. |
-| FR-002 | Publish schema-backed consultant project listing | Ready | [FR-002.md](backlog-items/FR-002.md) | [ADR-BP-002](adr/0002-data-contracts-before-dynamics.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Early-stage portfolio proof using problem-solution-outcome cards. |
-| FR-003 | Deliver reliable consultant contact conversion path | Ready | [FR-003.md](backlog-items/FR-003.md) | [ADR-BP-001](adr/0001-static-first-baseline.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Clear consultation request route from nav and CTAs. |
-| FR-004 | Publish display-only reviews section | Idea | [FR-004.md](backlog-items/FR-004.md) | [ADR-BP-002](adr/0002-data-contracts-before-dynamics.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Phase 2 — deferred; no real review content in Phase 1. |
+| FR-001 | Publish consultant-focused hero and services narrative | Done | [FR-001.md](backlog-items/FR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Implemented: hero, 3 service cards, CTA to contact. |
+| FR-002 | Publish schema-backed consultant project listing | Done | [FR-002.md](backlog-items/FR-002.md) | [ADR-BP-002](adr/0002-data-contracts-before-dynamics.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Implemented: schema-backed project cards with 2 seed records. |
+| FR-003 | Deliver reliable consultant contact conversion path | Done | [FR-003.md](backlog-items/FR-003.md) | [ADR-BP-001](adr/0001-static-first-baseline.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Implemented: contact page with email channel, response expectations, nav entry. |
+| FR-004 | Publish display-only reviews section | Done | [FR-004.md](backlog-items/FR-004.md) | [ADR-BP-002](adr/0002-data-contracts-before-dynamics.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Implemented: reviews page with schema-backed cards, 2 seed records, nav entry. |
 
 ## Quality Requirements (QR-*)
 
 | ID | Title | Status | Backlog Item | Related ADRs | Notes |
 | --- | --- | --- | --- | --- | --- |
-| QR-001 | Enforce CI quality gate baseline | In Progress | [QR-001.md](backlog-items/QR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md) | Workflows and local gates are green; branch protection merge blockers pending repo settings. |
+| QR-001 | Enforce CI quality gate baseline | In Progress | [QR-001.md](backlog-items/QR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md) | CI workflow (typecheck, lint, format:check, build) is green on PRs. Remaining: enable branch protection required checks in GitHub repo Settings → Branches. |
 
 ## Operational Requirements (OR-*)
 
 | ID | Title | Status | Backlog Item | Related ADRs | Notes |
 | --- | --- | --- | --- | --- | --- |
-| OR-001 | Automate GitHub Pages deployment | In Progress | [OR-001.md](backlog-items/OR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md) | Deployment workflow implemented; first successful Pages run and Pages source verification pending. |
+| OR-001 | Automate GitHub Pages deployment | In Progress | [OR-001.md](backlog-items/OR-001.md) | [ADR-BP-001](adr/0001-static-first-baseline.md) | Workflow implemented with GitHub Pages default URL/base path and deployment provenance; .nojekyll present. Remaining: confirm Pages source is "GitHub Actions" in repo Settings → Pages. |
 
 ## Compliance/Constraint Requirements (CR-*)
 
 | ID | Title | Status | Backlog Item | Related ADRs | Notes |
 | --- | --- | --- | --- | --- | --- |
-| CR-001 | Enforce contract change approval workflow | Ready | [CR-001.md](backlog-items/CR-001.md) | [ADR-BP-002](adr/0002-data-contracts-before-dynamics.md) | Breaking contract changes require approved ICR. |
+| CR-001 | Enforce contract change approval workflow | Done | [CR-001.md](backlog-items/CR-001.md) | [ADR-BP-002](adr/0002-data-contracts-before-dynamics.md) | CI enforces PR metadata for contract-sensitive changes and requires ICR + migration notes for breaking changes. |
 
 ## Notes
 

@@ -34,3 +34,59 @@ jobs:
 
       - name: Build
         run: npm run build
+
+  contract-governance:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate contract change metadata (CR-001)
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          set -euo pipefail
+
+          git fetch origin "$BASE_REF" --depth=1
+          CHANGED_FILES="$(git diff --name-only "origin/$BASE_REF...HEAD")"
+
+          echo "Changed files in PR:"
+          echo "$CHANGED_FILES"
+
+          CONTRACT_REGEX='^(src/content/config\.ts|astro\.config\.mjs|package\.json|tsconfig\.json|\.github/workflows/.*|src/content/.*)$'
+          if ! echo "$CHANGED_FILES" | grep -Eq "$CONTRACT_REGEX"; then
+            echo "No contract-sensitive file changes detected."
+            exit 0
+          fi
+
+          BODY_LOWER="$(printf '%s' "${PR_BODY:-}" | tr '[:upper:]' '[:lower:]')"
+          CHANGE_TYPE="$(echo "$BODY_LOWER" | sed -n 's/.*contract-change:[[:space:]]*\(none\|additive\|breaking\).*/\1/p' | head -n 1)"
+          ICR_LINK="$(echo "$BODY_LOWER" | sed -n 's/.*icr-link:[[:space:]]*\(.*\)/\1/p' | head -n 1)"
+          MIGRATION_NOTES="$(echo "$BODY_LOWER" | sed -n 's/.*migration-notes:[[:space:]]*\(.*\)/\1/p' | head -n 1)"
+
+          if [[ -z "$CHANGE_TYPE" ]]; then
+            echo "ERROR: Contract-sensitive changes require PR metadata."
+            echo "Add these lines in the PR body:"
+            echo "  Contract-Change: none|additive|breaking"
+            echo "  ICR-Link: <url-or-n/a>"
+            echo "  Migration-Notes: <url-or-n/a>"
+            exit 1
+          fi
+
+          if [[ "$CHANGE_TYPE" == "breaking" ]]; then
+            if [[ -z "$ICR_LINK" || "$ICR_LINK" == "n/a" ]]; then
+              echo "ERROR: Breaking contract change requires ICR-Link."
+              exit 1
+            fi
+            if [[ -z "$MIGRATION_NOTES" || "$MIGRATION_NOTES" == "n/a" ]]; then
+              echo "ERROR: Breaking contract change requires Migration-Notes."
+              exit 1
+            fi
+          fi
+
+          echo "Contract governance checks passed."
