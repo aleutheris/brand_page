@@ -1,10 +1,150 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(({ id, data }) => ({ id, ...data }));
 ---
 
 <BaseLayout title="Projects">
-  <section>
-    <h1>Projects</h1>
-    <p>Project listing slice will be implemented in FR-002.</p>
+  <section class="intro" aria-labelledby="projects-title">
+    <p class="eyebrow">Selected Client Work</p>
+    <h1 id="projects-title">Practical projects focused on small-business outcomes</h1>
+    <p>
+      These examples show the kind of AI, automation, and software delivery work
+      I implement for teams that need clearer operations and faster execution.
+    </p>
   </section>
+
+  <section aria-label="Project cards" class="cards">
+    {
+      projects.map((project) => (
+        <article class="card" aria-labelledby={`${project.id}-title`}>
+          <h2 id={`${project.id}-title`}>{project.title}</h2>
+
+          <p class="label">Business problem</p>
+          <p>{project.businessProblem}</p>
+
+          <p class="label">Delivered solution</p>
+          <p>{project.deliveredSolution}</p>
+
+          <p class="label">Observed outcome</p>
+          <p>{project.observedOutcome}</p>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="next-step" aria-label="Contact call to action">
+    <h2>Want results like these in your business?</h2>
+    <p>
+      If you have a workflow bottleneck or delivery gap, we can map the issue and
+      identify the fastest realistic path to improvement.
+    </p>
+    <a href="/contact">Start a consultation</a>
+  </section>
+
+  <style>
+    .intro p {
+      max-width: 64ch;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--brand-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0.55rem 0 0.75rem;
+      max-width: 18ch;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.1;
+      text-wrap: balance;
+    }
+
+    .cards {
+      display: grid;
+      gap: 0.9rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 1.3rem;
+    }
+
+    .card {
+      border: 1px solid var(--stroke);
+      border-radius: 1rem;
+      background: color-mix(in srgb, white, var(--surface) 30%);
+      padding: 1rem;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.15rem;
+      text-wrap: balance;
+    }
+
+    .card p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .label {
+      margin-top: 0.75rem;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.87rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .next-step {
+      margin-top: 1.2rem;
+      border-left: 5px solid var(--brand);
+      padding: 0.25rem 0 0.25rem 1rem;
+    }
+
+    .next-step h2 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .next-step p {
+      margin: 0.5rem 0 0.85rem;
+      max-width: 62ch;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .next-step a {
+      display: inline-flex;
+      min-height: 2.8rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.75rem;
+      padding: 0 1rem;
+      font-weight: 700;
+      background: var(--brand);
+      color: #f8fcfb;
+    }
+
+    .next-step a:hover,
+    .next-step a:focus-visible {
+      background: var(--brand-dark);
+      outline: none;
+    }
+
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </BaseLayout>

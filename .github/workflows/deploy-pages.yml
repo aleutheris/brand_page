@@ -33,8 +33,8 @@ jobs:
       - name: Build static site
         run: npm run build
         env:
-          SITE_URL: https://${{ github.repository_owner }}.github.io
-          BASE_PATH: /${{ github.event.repository.name }}
+          SITE_URL: https://aleutheris.com
+          BASE_PATH: /
 
       - name: Deployment provenance
         run: echo "Deploying commit ${GITHUB_SHA}"

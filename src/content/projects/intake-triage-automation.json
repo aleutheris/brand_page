@@ -1,0 +1,7 @@
+{
+  "title": "Intake and Triage Automation",
+  "businessProblem": "A service business spent too much time sorting inbound requests manually, delaying responses and losing qualified opportunities.",
+  "deliveredSolution": "Built a lightweight intake workflow that auto-categorized requests, routed priorities, and generated a clear next-action queue for the team.",
+  "observedOutcome": "Response time dropped from days to same-day for priority inquiries, with less admin load and more consistent follow-through.",
+  "order": 1
+}

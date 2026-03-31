@@ -3,8 +3,134 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Contact">
-  <section>
-    <h1>Contact</h1>
-    <p>Contact conversion slice will be implemented in FR-003.</p>
+  <section class="intro" aria-labelledby="contact-title">
+    <p class="eyebrow">Start the Conversation</p>
+    <h1 id="contact-title">Let’s talk through your automation challenge</h1>
+    <p>
+      If your team is losing time to manual workflows, inconsistent delivery, or
+      unclear systems, I can help you identify practical next steps and implement
+      what matters most.
+    </p>
   </section>
+
+  <section class="channels" aria-label="Contact channels">
+    <article class="channel">
+      <h2>Email</h2>
+      <p>
+        Share your business context, current blockers, and goals so I can prepare
+        a focused first conversation.
+      </p>
+      <a href="mailto:hello@brandpage.consulting">hello@brandpage.consulting</a>
+    </article>
+
+    <article class="channel">
+      <h2>Discovery Call</h2>
+      <p>
+        Prefer a quick walkthrough? Book a short call and we can map your highest
+        leverage automation opportunities.
+      </p>
+      <a href="mailto:hello@brandpage.consulting?subject=Discovery%20Call%20Request">Request a discovery call</a>
+    </article>
+  </section>
+
+  <section class="expectation" aria-label="Response expectations">
+    <h2>Response expectation</h2>
+    <p>
+      I respond to new consultation requests within one business day. If your
+      request is urgent, include your preferred timeline in the message.
+    </p>
+  </section>
+
+  <style>
+    .intro p {
+      max-width: 64ch;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--brand-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0.55rem 0 0.75rem;
+      max-width: 18ch;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.1;
+      text-wrap: balance;
+    }
+
+    .channels {
+      margin-top: 1.25rem;
+      display: grid;
+      gap: 0.9rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .channel {
+      border: 1px solid var(--stroke);
+      border-radius: 1rem;
+      background: #fff;
+      padding: 1rem;
+    }
+
+    .channel h2 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .channel p {
+      margin: 0.6rem 0 0.8rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .channel a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.6rem;
+      border-radius: 0.72rem;
+      padding: 0 0.9rem;
+      font-weight: 700;
+      background: var(--brand);
+      color: #f8fcfb;
+      text-align: center;
+    }
+
+    .channel a:hover,
+    .channel a:focus-visible {
+      background: var(--brand-dark);
+      outline: none;
+    }
+
+    .expectation {
+      margin-top: 1.15rem;
+      border-left: 5px solid var(--brand);
+      padding: 0.25rem 0 0.25rem 1rem;
+    }
+
+    .expectation h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .expectation p {
+      margin: 0.5rem 0 0;
+      max-width: 62ch;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 900px) {
+      .channels {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </BaseLayout>
