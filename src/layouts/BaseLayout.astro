@@ -1,10 +1,17 @@
 ---
+import { withBase } from "../lib/withBase";
+
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const homeUrl = withBase(base);
+const projectsUrl = withBase(base, "projects/");
+const reviewsUrl = withBase(base, "reviews/");
+const contactUrl = withBase(base, "contact/");
+const logoUrl = withBase(base, "images/logo_with_name.png");
 ---
 
 <!doctype html>
@@ -85,14 +92,14 @@ const base = import.meta.env.BASE_URL;
   <body>
     <header>
       <nav aria-label="Primary navigation">
-        <a href={base} class="nav-brand">
-          <img src={`${base}images/logo_with_name.png`} alt="" class="logo" />
+        <a href={homeUrl} class="nav-brand">
+          <img src={logoUrl} alt="" class="logo" />
         </a>
         <div class="nav-links">
-          <a href={base}>Home</a>
-          <a href={`${base}projects`}>Projects</a>
-          <a href={`${base}reviews`}>Reviews</a>
-          <a href={`${base}contact`}>Contact</a>
+          <a href={homeUrl}>Home</a>
+          <a href={projectsUrl}>Projects</a>
+          <a href={reviewsUrl}>Reviews</a>
+          <a href={contactUrl}>Contact</a>
         </div>
       </nav>
     </header>
