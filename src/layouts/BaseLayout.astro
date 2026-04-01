@@ -4,6 +4,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
@@ -12,29 +13,57 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style is:global>
       :root {
-        --bg: #f4efe7;
-        --surface: #fffaf3;
-        --ink: #21201e;
-        --muted: #5e5a53;
-        --brand: #0f766e;
-        --brand-dark: #115e59;
-        --stroke: #d9d0c3;
+        --bg: #f8fafc;
+        --bg-dark: #0f172a;
+        --bg-dark-end: #1e293b;
+        --surface: #ffffff;
+        --ink: #0f172a;
+        --ink-light: #f1f5f9;
+        --muted: #64748b;
+        --muted-light: #94a3b8;
+        --brand: #14b8a6;
+        --brand-dark: #0d9488;
+        --brand-glow: rgba(20, 184, 166, 0.15);
+        --stroke: #e2e8f0;
+        --radius: 0.75rem;
+        --radius-lg: 1rem;
+        --radius-xl: 1.25rem;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+        --shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1);
+        --transition: 0.2s ease;
+        --max-w: min(1120px, 92vw);
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
         color: var(--ink);
-        font-family: "Space Grotesk", "Manrope", sans-serif;
-        background:
-          radial-gradient(circle at 10% 0%, #fff6d9 0%, transparent 32%),
-          radial-gradient(circle at 100% 10%, #d8f5ef 0%, transparent 25%),
-          var(--bg);
+        font-family: "Inter", system-ui, sans-serif;
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Space Grotesk", system-ui, sans-serif;
       }
 
       a {
@@ -42,61 +71,130 @@ const { title } = Astro.props;
         text-decoration: none;
       }
 
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        backdrop-filter: blur(4px);
-        background: color-mix(in srgb, var(--bg), transparent 22%);
-        border-bottom: 1px solid var(--stroke);
+      img {
+        max-width: 100%;
+        height: auto;
       }
 
-      nav {
-        display: flex;
-        gap: 1rem;
-        width: min(1080px, 92vw);
-        margin: 0 auto;
-        padding: 0.95rem 0;
-      }
-
-      nav a {
-        font-weight: 700;
-        letter-spacing: 0.01em;
-        padding: 0.45rem 0.65rem;
-        border-radius: 0.6rem;
-      }
-
-      nav a:hover,
-      nav a:focus-visible {
-        background: color-mix(in srgb, var(--brand), white 86%);
-        outline: none;
-      }
-
-      main {
-        width: min(1080px, 92vw);
-        margin: 2.6rem auto 3.5rem;
-      }
-
-      @media (max-width: 640px) {
-        nav {
-          justify-content: space-between;
-          gap: 0.4rem;
-          font-size: 0.92rem;
-        }
+      .wrap {
+        width: var(--max-w);
+        margin-inline: auto;
       }
     </style>
   </head>
   <body>
     <header>
       <nav aria-label="Primary navigation">
-        <a href="/">Home</a>
-        <a href="/projects">Projects</a>
-        <a href="/reviews">Reviews</a>
-        <a href="/contact">Contact</a>
+        <a href={base} class="nav-brand">
+          <img src={`${base}images/logo_with_name.png`} alt="" class="logo" />
+        </a>
+        <div class="nav-links">
+          <a href={base}>Home</a>
+          <a href={`${base}projects`}>Projects</a>
+          <a href={`${base}reviews`}>Reviews</a>
+          <a href={`${base}contact`}>Contact</a>
+        </div>
       </nav>
     </header>
     <main>
       <slot />
     </main>
+    <footer>
+      <div class="wrap">
+        <p>
+          &copy; {new Date().getFullYear()} &middot; AI &amp; Automation Consulting
+        </p>
+      </div>
+    </footer>
+    <style>
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px) saturate(1.6);
+        -webkit-backdrop-filter: blur(14px) saturate(1.6);
+        background: rgba(248, 250, 252, 0.82);
+        border-bottom: 1px solid var(--stroke);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        width: var(--max-w);
+        margin: 0 auto;
+        padding: 0.7rem 0;
+        gap: 1.25rem;
+      }
+
+      .nav-brand {
+        display: flex;
+        flex-shrink: 0;
+      }
+
+      .logo {
+        height: 2rem;
+        width: auto;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 0.15rem;
+        margin-left: auto;
+      }
+
+      .nav-links a {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.45rem 0.7rem;
+        border-radius: var(--radius);
+        transition:
+          background var(--transition),
+          color var(--transition);
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible {
+        background: var(--brand-glow);
+        color: var(--brand-dark);
+        outline: none;
+      }
+
+      main {
+        min-height: 60vh;
+      }
+
+      footer {
+        margin-top: 3rem;
+        border-top: 1px solid var(--stroke);
+        padding: 1.5rem 0;
+      }
+
+      footer p {
+        margin: 0;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.84rem;
+      }
+
+      @media (max-width: 640px) {
+        nav {
+          gap: 0.5rem;
+        }
+
+        .logo {
+          height: 1.6rem;
+        }
+
+        .nav-links {
+          gap: 0;
+        }
+
+        .nav-links a {
+          padding: 0.35rem 0.45rem;
+          font-size: 0.84rem;
+        }
+      }
+    </style>
   </body>
 </html>

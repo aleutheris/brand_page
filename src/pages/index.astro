@@ -1,96 +1,129 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Brand Page">
   <section class="hero" aria-labelledby="hero-title">
-    <p class="eyebrow">AI and Automation Consulting</p>
-    <h1 id="hero-title">
-      I help small businesses automate the work that slows them down.
-    </h1>
-    <p class="intro">
-      I am a consultant focused on AI, automation, and software development for
-      small business teams. I identify bottlenecks, build practical systems, and
-      deliver solutions your team can actually use day to day.
-    </p>
-    <div class="actions">
-      <a class="cta-primary" href="/contact">Book a Consultation</a>
-      <a class="cta-secondary" href="/projects">View Projects</a>
+    <div class="wrap">
+      <p class="eyebrow">AI &amp; Automation Consulting</p>
+      <h1 id="hero-title">
+        I help small businesses automate the work that slows them down.
+      </h1>
+      <p class="intro">
+        I am a consultant focused on AI, automation, and software development
+        for small business teams. I identify bottlenecks, build practical
+        systems, and deliver solutions your team can actually use day to day.
+      </p>
+      <div class="actions">
+        <a class="cta-primary" href={`${base}contact`}>Book a Consultation</a>
+        <a class="cta-secondary" href={`${base}projects`}>View Projects</a>
+      </div>
     </div>
   </section>
 
-  <section class="services" aria-label="Core services">
-    <article class="service">
-      <h2>Workflow Automation</h2>
-      <p>
-        Replace manual repetitive tasks with automations that save time, reduce
-        errors, and free your team to focus on higher-value work.
-      </p>
-    </article>
-    <article class="service">
-      <h2>AI-Enabled Operations</h2>
-      <p>
-        Apply AI where it creates real business value, from smarter internal
-        processes to faster decision support and better service delivery.
-      </p>
-    </article>
-    <article class="service">
-      <h2>Custom Software Solutions</h2>
-      <p>
-        Design and build focused tools that solve specific business problems,
-        integrate with your workflow, and scale as your operations grow.
-      </p>
-    </article>
+  <section class="services wrap" aria-label="Core services">
+    <h2 class="section-heading">What I deliver</h2>
+    <div class="service-grid">
+      <article class="service">
+        <h3>Workflow Automation</h3>
+        <p>
+          Replace manual repetitive tasks with automations that save time,
+          reduce errors, and free your team to focus on higher-value work.
+        </p>
+      </article>
+      <article class="service">
+        <h3>AI-Enabled Operations</h3>
+        <p>
+          Apply AI where it creates real business value, from smarter internal
+          processes to faster decision support and better service delivery.
+        </p>
+      </article>
+      <article class="service">
+        <h3>Custom Software Solutions</h3>
+        <p>
+          Design and build focused tools that solve specific business problems,
+          integrate with your workflow, and scale as your operations grow.
+        </p>
+      </article>
+    </div>
   </section>
 
   <section class="highlight" aria-label="Primary offer summary">
-    <h2>Clear process. Practical delivery. Measurable improvement.</h2>
-    <p>
-      If your business has operational friction, I can help map the problem,
-      implement the right solution, and move you toward faster and cleaner
-      execution.
-    </p>
+    <div class="wrap">
+      <div class="highlight-card">
+        <h2>Clear process. Practical delivery. Measurable improvement.</h2>
+        <p>
+          If your business has operational friction, I can help map the problem,
+          implement the right solution, and move you toward faster and cleaner
+          execution.
+        </p>
+      </div>
+    </div>
   </section>
 
   <style>
     .hero {
-      background: var(--surface);
-      border: 1px solid var(--stroke);
-      border-radius: 1.2rem;
-      padding: clamp(1.35rem, 2vw, 2.2rem);
-      box-shadow: 0 14px 30px rgb(35 32 25 / 7%);
+      background: linear-gradient(
+        135deg,
+        var(--bg-dark) 0%,
+        var(--bg-dark-end) 100%
+      );
+      padding: clamp(3rem, 8vw, 6rem) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(
+          circle at 70% 20%,
+          rgba(20, 184, 166, 0.12) 0%,
+          transparent 50%
+        ),
+        radial-gradient(
+          circle at 20% 80%,
+          rgba(20, 184, 166, 0.06) 0%,
+          transparent 40%
+        );
+      pointer-events: none;
     }
 
     .eyebrow {
-      margin: 0 0 0.6rem;
-      color: var(--brand-dark);
+      margin: 0 0 0.75rem;
+      color: var(--brand);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.78rem;
-      font-weight: 700;
+      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      font-weight: 600;
     }
 
     h1 {
       margin: 0;
       max-width: 18ch;
-      font-size: clamp(2.1rem, 5vw, 3.3rem);
-      line-height: 1.05;
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      line-height: 1.06;
+      color: var(--ink-light);
       text-wrap: balance;
     }
 
     .intro {
-      max-width: 60ch;
-      margin: 1rem 0 0;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 1.04rem;
+      max-width: 56ch;
+      margin: 1.2rem 0 0;
+      color: var(--muted-light);
+      line-height: 1.65;
+      font-size: 1.05rem;
     }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 1.4rem;
+      gap: 0.75rem;
+      margin-top: 1.8rem;
     }
 
     .cta-primary,
@@ -98,80 +131,126 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 2.8rem;
-      border-radius: 0.75rem;
-      padding: 0 1rem;
-      font-weight: 700;
+      min-height: 2.9rem;
+      border-radius: var(--radius);
+      padding: 0 1.25rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all var(--transition);
     }
 
     .cta-primary {
       background: var(--brand);
-      color: #f8fcfb;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
     }
 
     .cta-primary:hover,
     .cta-primary:focus-visible {
       background: var(--brand-dark);
+      box-shadow: 0 0 30px rgba(20, 184, 166, 0.45);
       outline: none;
     }
 
     .cta-secondary {
-      border: 1px solid var(--stroke);
-      background: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--ink-light);
+      background: rgba(255, 255, 255, 0.05);
     }
 
     .cta-secondary:hover,
     .cta-secondary:focus-visible {
-      background: #f6f9f8;
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.1);
       outline: none;
     }
 
     .services {
-      margin-top: 1.3rem;
+      padding: 3rem 0 0;
+    }
+
+    .section-heading {
+      margin: 0 0 1.25rem;
+      font-size: 1.35rem;
+      color: var(--ink);
+    }
+
+    .service-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.8rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
     }
 
     .service {
+      background: var(--surface);
       border: 1px solid var(--stroke);
-      background: #fff;
-      border-radius: 0.95rem;
-      padding: 1rem;
+      border-top: 3px solid var(--brand);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition);
     }
 
-    .service h2 {
+    .service:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .service h3 {
       margin: 0;
       font-size: 1.05rem;
     }
 
     .service p {
-      margin: 0.65rem 0 0;
+      margin: 0.6rem 0 0;
       color: var(--muted);
-      line-height: 1.55;
-      font-size: 0.97rem;
+      line-height: 1.6;
+      font-size: 0.95rem;
     }
 
     .highlight {
-      margin-top: 1.1rem;
-      border-left: 5px solid var(--brand);
-      padding: 0.3rem 0 0.3rem 1rem;
+      padding: 2.5rem 0 0;
     }
 
-    .highlight h2 {
+    .highlight-card {
+      background: linear-gradient(
+        135deg,
+        var(--bg-dark) 0%,
+        var(--bg-dark-end) 100%
+      );
+      border-radius: var(--radius-xl);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand), transparent);
+    }
+
+    .highlight-card h2 {
       margin: 0;
-      font-size: 1.2rem;
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      color: var(--ink-light);
       text-wrap: balance;
     }
 
-    .highlight p {
-      margin: 0.5rem 0 0;
-      color: var(--muted);
-      line-height: 1.55;
+    .highlight-card p {
+      margin: 0.6rem 0 0;
+      color: var(--muted-light);
+      line-height: 1.6;
+      max-width: 60ch;
     }
 
     @media (max-width: 900px) {
-      .services {
+      .service-grid {
         grid-template-columns: 1fr;
       }
     }

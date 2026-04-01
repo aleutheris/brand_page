@@ -2,65 +2,89 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
+const base = import.meta.env.BASE_URL;
+
 const reviews = (await getCollection("reviews"))
   .sort((a, b) => a.data.order - b.data.order)
   .map(({ id, data }) => ({ id, ...data }));
 ---
 
 <BaseLayout title="Reviews">
-  <section class="intro" aria-labelledby="reviews-title">
-    <p class="eyebrow">Client Feedback</p>
-    <h1 id="reviews-title">What clients say about working together</h1>
-    <p>
-      These are real outcomes shared by clients after delivery. Social proof
-      matters, and these results represent the kind of practical impact I aim
-      for in every engagement.
-    </p>
-  </section>
+  <div class="page-header">
+    <div class="wrap">
+      <p class="eyebrow">Client Feedback</p>
+      <h1 id="reviews-title">What clients say about working together</h1>
+      <p class="header-desc">
+        These are real outcomes shared by clients after delivery. Social proof
+        matters, and these results represent the kind of practical impact I aim
+        for in every engagement.
+      </p>
+    </div>
+  </div>
 
-  <section aria-label="Review cards" class="cards">
-    {
-      reviews.map((review) => (
-        <article class="card" aria-labelledby={`${review.id}-name`}>
-          <blockquote>
-            <p class="review-text">{review.reviewText}</p>
-          </blockquote>
-          <footer>
-            <p id={`${review.id}-name`} class="reviewer-name">
-              {review.reviewerName}
-            </p>
-            {review.projectRef && (
-              <p class="project-ref">{review.projectRef}</p>
-            )}
-          </footer>
-        </article>
-      ))
-    }
-  </section>
+  <div class="wrap">
+    <section aria-label="Review cards" class="cards">
+      {
+        reviews.map((review) => (
+          <article class="card" aria-labelledby={`${review.id}-name`}>
+            <blockquote>
+              <p class="review-text">{review.reviewText}</p>
+            </blockquote>
+            <footer>
+              <p id={`${review.id}-name`} class="reviewer-name">
+                {review.reviewerName}
+              </p>
+              {review.projectRef && (
+                <p class="project-ref">{review.projectRef}</p>
+              )}
+            </footer>
+          </article>
+        ))
+      }
+    </section>
 
-  <section class="cta" aria-label="Contact call to action">
-    <h2>Ready to get results like these?</h2>
-    <p>
-      A short discovery call is all it takes to map your biggest automation
-      opportunity and identify a practical next step.
-    </p>
-    <a href="/contact">Start the conversation</a>
-  </section>
+    <section class="cta" aria-label="Contact call to action">
+      <div class="cta-card">
+        <h2>Ready to get results like these?</h2>
+        <p>
+          A short discovery call is all it takes to map your biggest automation
+          opportunity and identify a practical next step.
+        </p>
+        <a href={`${base}contact`}>Start the conversation</a>
+      </div>
+    </section>
+  </div>
 
   <style>
-    .intro p {
-      max-width: 64ch;
-      color: var(--muted);
-      line-height: 1.6;
+    .page-header {
+      background: linear-gradient(
+        135deg,
+        var(--bg-dark) 0%,
+        var(--bg-dark-end) 100%
+      );
+      padding: clamp(2rem, 5vw, 3.5rem) 0;
+      position: relative;
+    }
+
+    .page-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 80% 30%,
+        rgba(20, 184, 166, 0.1) 0%,
+        transparent 50%
+      );
+      pointer-events: none;
     }
 
     .eyebrow {
       margin: 0;
-      color: var(--brand-dark);
+      color: var(--brand);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.78rem;
-      font-weight: 700;
+      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      font-weight: 600;
     }
 
     h1 {
@@ -69,87 +93,132 @@ const reviews = (await getCollection("reviews"))
       font-size: clamp(1.9rem, 4vw, 2.8rem);
       line-height: 1.1;
       text-wrap: balance;
+      color: var(--ink-light);
+    }
+
+    .header-desc {
+      max-width: 56ch;
+      margin: 0;
+      color: var(--muted-light);
+      line-height: 1.6;
     }
 
     .cards {
       display: grid;
-      gap: 0.9rem;
+      gap: 1rem;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      margin-top: 1.3rem;
+      margin-top: 2rem;
     }
 
     .card {
       border: 1px solid var(--stroke);
-      border-radius: 1rem;
-      background: #fff;
-      padding: 1rem 1rem 0.85rem;
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      padding: 1.25rem 1.25rem 1rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
     }
 
     blockquote {
       margin: 0;
+      position: relative;
+      padding-left: 1rem;
+      border-left: 3px solid var(--brand);
     }
 
     .review-text {
       margin: 0;
       color: var(--ink);
-      line-height: 1.6;
-      font-size: 1rem;
+      line-height: 1.65;
+      font-size: 0.97rem;
+      font-style: italic;
     }
 
     footer {
-      margin-top: 0.9rem;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
       border-top: 1px solid var(--stroke);
-      padding-top: 0.65rem;
     }
 
     .reviewer-name {
       margin: 0;
+      font-family: "Space Grotesk", system-ui, sans-serif;
       font-weight: 700;
       font-size: 0.92rem;
     }
 
     .project-ref {
-      margin: 0.2rem 0 0;
-      font-size: 0.82rem;
+      margin: 0.15rem 0 0;
+      font-size: 0.8rem;
       color: var(--muted);
     }
 
     .cta {
-      margin-top: 1.2rem;
-      border-left: 5px solid var(--brand);
-      padding: 0.25rem 0 0.25rem 1rem;
+      margin-top: 2rem;
     }
 
-    .cta h2 {
+    .cta-card {
+      background: linear-gradient(
+        135deg,
+        var(--bg-dark) 0%,
+        var(--bg-dark-end) 100%
+      );
+      border-radius: var(--radius-xl);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand), transparent);
+    }
+
+    .cta-card h2 {
       margin: 0;
       font-size: 1.25rem;
+      color: var(--ink-light);
     }
 
-    .cta p {
-      margin: 0.5rem 0 0.85rem;
+    .cta-card p {
+      margin: 0.5rem 0 1rem;
       max-width: 62ch;
-      color: var(--muted);
+      color: var(--muted-light);
       line-height: 1.55;
     }
 
-    .cta a {
+    .cta-card a {
       display: inline-flex;
       min-height: 2.8rem;
       align-items: center;
       justify-content: center;
-      border-radius: 0.75rem;
-      padding: 0 1rem;
-      font-weight: 700;
+      border-radius: var(--radius);
+      padding: 0 1.25rem;
+      font-weight: 600;
       background: var(--brand);
-      color: #f8fcfb;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+      transition: all var(--transition);
     }
 
-    .cta a:hover,
-    .cta a:focus-visible {
+    .cta-card a:hover,
+    .cta-card a:focus-visible {
       background: var(--brand-dark);
+      box-shadow: 0 0 30px rgba(20, 184, 166, 0.45);
       outline: none;
     }
 

@@ -3,65 +3,90 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 import { getCollection } from "astro:content";
 
+const base = import.meta.env.BASE_URL;
+
 const projects = (await getCollection("projects"))
   .sort((a, b) => a.data.order - b.data.order)
   .map(({ id, data }) => ({ id, ...data }));
 ---
 
 <BaseLayout title="Projects">
-  <section class="intro" aria-labelledby="projects-title">
-    <p class="eyebrow">Selected Client Work</p>
-    <h1 id="projects-title">
-      Practical projects focused on small-business outcomes
-    </h1>
-    <p>
-      These examples show the kind of AI, automation, and software delivery work
-      I implement for teams that need clearer operations and faster execution.
-    </p>
-  </section>
+  <div class="page-header">
+    <div class="wrap">
+      <p class="eyebrow">Selected Client Work</p>
+      <h1 id="projects-title">
+        Practical projects focused on small-business outcomes
+      </h1>
+      <p class="header-desc">
+        These examples show the kind of AI, automation, and software delivery
+        work I implement for teams that need clearer operations and faster
+        execution.
+      </p>
+    </div>
+  </div>
 
-  <section aria-label="Project cards" class="cards">
-    {
-      projects.map((project) => (
-        <article class="card" aria-labelledby={`${project.id}-title`}>
-          <h2 id={`${project.id}-title`}>{project.title}</h2>
+  <div class="wrap">
+    <section aria-label="Project cards" class="cards">
+      {
+        projects.map((project) => (
+          <article class="card" aria-labelledby={`${project.id}-title`}>
+            <h2 id={`${project.id}-title`}>{project.title}</h2>
 
-          <p class="label">Business problem</p>
-          <p>{project.businessProblem}</p>
+            <p class="label">Business problem</p>
+            <p>{project.businessProblem}</p>
 
-          <p class="label">Delivered solution</p>
-          <p>{project.deliveredSolution}</p>
+            <p class="label">Delivered solution</p>
+            <p>{project.deliveredSolution}</p>
 
-          <p class="label">Observed outcome</p>
-          <p>{project.observedOutcome}</p>
-        </article>
-      ))
-    }
-  </section>
+            <p class="label">Observed outcome</p>
+            <p>{project.observedOutcome}</p>
+          </article>
+        ))
+      }
+    </section>
 
-  <section class="next-step" aria-label="Contact call to action">
-    <h2>Want results like these in your business?</h2>
-    <p>
-      If you have a workflow bottleneck or delivery gap, we can map the issue
-      and identify the fastest realistic path to improvement.
-    </p>
-    <a href="/contact">Start a consultation</a>
-  </section>
+    <section class="next-step" aria-label="Contact call to action">
+      <div class="next-step-card">
+        <h2>Want results like these in your business?</h2>
+        <p>
+          If you have a workflow bottleneck or delivery gap, we can map the
+          issue and identify the fastest realistic path to improvement.
+        </p>
+        <a href={`${base}contact`}>Start a consultation</a>
+      </div>
+    </section>
+  </div>
 
   <style>
-    .intro p {
-      max-width: 64ch;
-      color: var(--muted);
-      line-height: 1.6;
+    .page-header {
+      background: linear-gradient(
+        135deg,
+        var(--bg-dark) 0%,
+        var(--bg-dark-end) 100%
+      );
+      padding: clamp(2rem, 5vw, 3.5rem) 0;
+      position: relative;
+    }
+
+    .page-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 80% 30%,
+        rgba(20, 184, 166, 0.1) 0%,
+        transparent 50%
+      );
+      pointer-events: none;
     }
 
     .eyebrow {
       margin: 0;
-      color: var(--brand-dark);
+      color: var(--brand);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.78rem;
-      font-weight: 700;
+      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      font-weight: 600;
     }
 
     h1 {
@@ -70,20 +95,37 @@ const projects = (await getCollection("projects"))
       font-size: clamp(1.9rem, 4vw, 2.8rem);
       line-height: 1.1;
       text-wrap: balance;
+      color: var(--ink-light);
+    }
+
+    .header-desc {
+      max-width: 56ch;
+      margin: 0;
+      color: var(--muted-light);
+      line-height: 1.6;
     }
 
     .cards {
       display: grid;
-      gap: 0.9rem;
+      gap: 1rem;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      margin-top: 1.3rem;
+      margin-top: 2rem;
     }
 
     .card {
       border: 1px solid var(--stroke);
-      border-radius: 1rem;
-      background: color-mix(in srgb, white, var(--surface) 30%);
-      padding: 1rem;
+      border-top: 3px solid var(--brand);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      padding: 1.25rem;
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
     }
 
     .card h2 {
@@ -102,44 +144,68 @@ const projects = (await getCollection("projects"))
       margin-top: 0.75rem;
       color: var(--ink);
       font-weight: 700;
-      font-size: 0.87rem;
+      font-size: 0.82rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
     }
 
     .next-step {
-      margin-top: 1.2rem;
-      border-left: 5px solid var(--brand);
-      padding: 0.25rem 0 0.25rem 1rem;
+      margin-top: 2rem;
     }
 
-    .next-step h2 {
+    .next-step-card {
+      background: linear-gradient(
+        135deg,
+        var(--bg-dark) 0%,
+        var(--bg-dark-end) 100%
+      );
+      border-radius: var(--radius-xl);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .next-step-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand), transparent);
+    }
+
+    .next-step-card h2 {
       margin: 0;
       font-size: 1.25rem;
+      color: var(--ink-light);
     }
 
-    .next-step p {
-      margin: 0.5rem 0 0.85rem;
+    .next-step-card p {
+      margin: 0.5rem 0 1rem;
       max-width: 62ch;
-      color: var(--muted);
+      color: var(--muted-light);
       line-height: 1.55;
     }
 
-    .next-step a {
+    .next-step-card a {
       display: inline-flex;
       min-height: 2.8rem;
       align-items: center;
       justify-content: center;
-      border-radius: 0.75rem;
-      padding: 0 1rem;
-      font-weight: 700;
+      border-radius: var(--radius);
+      padding: 0 1.25rem;
+      font-weight: 600;
       background: var(--brand);
-      color: #f8fcfb;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+      transition: all var(--transition);
     }
 
-    .next-step a:hover,
-    .next-step a:focus-visible {
+    .next-step-card a:hover,
+    .next-step-card a:focus-visible {
       background: var(--brand-dark);
+      box-shadow: 0 0 30px rgba(20, 184, 166, 0.45);
       outline: none;
     }
 

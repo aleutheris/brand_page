@@ -3,61 +3,88 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Contact">
-  <section class="intro" aria-labelledby="contact-title">
-    <p class="eyebrow">Start the Conversation</p>
-    <h1 id="contact-title">Let’s talk through your automation challenge</h1>
-    <p>
-      If your team is losing time to manual workflows, inconsistent delivery, or
-      unclear systems, I can help you identify practical next steps and
-      implement what matters most.
-    </p>
-  </section>
-
-  <section class="channels" aria-label="Contact channels">
-    <article class="channel">
-      <h2>Email</h2>
-      <p>
-        Share your business context, current blockers, and goals so I can
-        prepare a focused first conversation.
+  <div class="page-header">
+    <div class="wrap">
+      <p class="eyebrow">Start the Conversation</p>
+      <h1 id="contact-title">
+        Let's talk through your automation challenge
+      </h1>
+      <p class="header-desc">
+        If your team is losing time to manual workflows, inconsistent delivery,
+        or unclear systems, I can help you identify practical next steps and
+        implement what matters most.
       </p>
-      <a href="mailto:hello@brandpage.consulting">hello@brandpage.consulting</a>
-    </article>
+    </div>
+  </div>
 
-    <article class="channel">
-      <h2>Discovery Call</h2>
-      <p>
-        Prefer a quick walkthrough? Book a short call and we can map your
-        highest leverage automation opportunities.
-      </p>
-      <a
-        href="mailto:hello@brandpage.consulting?subject=Discovery%20Call%20Request"
-        >Request a discovery call</a
-      >
-    </article>
-  </section>
+  <div class="wrap">
+    <section class="channels" aria-label="Contact channels">
+      <article class="channel">
+        <h2>Email</h2>
+        <p>
+          Share your business context, current blockers, and goals so I can
+          prepare a focused first conversation.
+        </p>
+        <a href="mailto:hello@brandpage.consulting"
+          >hello@brandpage.consulting</a
+        >
+      </article>
 
-  <section class="expectation" aria-label="Response expectations">
-    <h2>Response expectation</h2>
-    <p>
-      I respond to new consultation requests within one business day. If your
-      request is urgent, include your preferred timeline in the message.
-    </p>
-  </section>
+      <article class="channel">
+        <h2>Discovery Call</h2>
+        <p>
+          Prefer a quick walkthrough? Book a short call and we can map your
+          highest leverage automation opportunities.
+        </p>
+        <a
+          href="mailto:hello@brandpage.consulting?subject=Discovery%20Call%20Request"
+          >Request a discovery call</a
+        >
+      </article>
+    </section>
+
+    <section class="expectation" aria-label="Response expectations">
+      <div class="expectation-card">
+        <h2>Response expectation</h2>
+        <p>
+          I respond to new consultation requests within one business day. If
+          your request is urgent, include your preferred timeline in the
+          message.
+        </p>
+      </div>
+    </section>
+  </div>
 
   <style>
-    .intro p {
-      max-width: 64ch;
-      color: var(--muted);
-      line-height: 1.6;
+    .page-header {
+      background: linear-gradient(
+        135deg,
+        var(--bg-dark) 0%,
+        var(--bg-dark-end) 100%
+      );
+      padding: clamp(2rem, 5vw, 3.5rem) 0;
+      position: relative;
+    }
+
+    .page-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 80% 30%,
+        rgba(20, 184, 166, 0.1) 0%,
+        transparent 50%
+      );
+      pointer-events: none;
     }
 
     .eyebrow {
       margin: 0;
-      color: var(--brand-dark);
+      color: var(--brand);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.78rem;
-      font-weight: 700;
+      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      font-weight: 600;
     }
 
     h1 {
@@ -66,20 +93,37 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       font-size: clamp(1.9rem, 4vw, 2.8rem);
       line-height: 1.1;
       text-wrap: balance;
+      color: var(--ink-light);
+    }
+
+    .header-desc {
+      max-width: 56ch;
+      margin: 0;
+      color: var(--muted-light);
+      line-height: 1.6;
     }
 
     .channels {
-      margin-top: 1.25rem;
+      margin-top: 2rem;
       display: grid;
-      gap: 0.9rem;
+      gap: 1rem;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .channel {
       border: 1px solid var(--stroke);
-      border-radius: 1rem;
-      background: #fff;
-      padding: 1rem;
+      border-top: 3px solid var(--brand);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      padding: 1.25rem;
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .channel:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
     }
 
     .channel h2 {
@@ -98,35 +142,58 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       align-items: center;
       justify-content: center;
       min-height: 2.6rem;
-      border-radius: 0.72rem;
-      padding: 0 0.9rem;
-      font-weight: 700;
+      border-radius: var(--radius);
+      padding: 0 1rem;
+      font-weight: 600;
       background: var(--brand);
-      color: #f8fcfb;
-      text-align: center;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+      transition: all var(--transition);
     }
 
     .channel a:hover,
     .channel a:focus-visible {
       background: var(--brand-dark);
+      box-shadow: 0 0 30px rgba(20, 184, 166, 0.45);
       outline: none;
     }
 
     .expectation {
-      margin-top: 1.15rem;
-      border-left: 5px solid var(--brand);
-      padding: 0.25rem 0 0.25rem 1rem;
+      margin-top: 2rem;
     }
 
-    .expectation h2 {
+    .expectation-card {
+      background: linear-gradient(
+        135deg,
+        var(--bg-dark) 0%,
+        var(--bg-dark-end) 100%
+      );
+      border-radius: var(--radius-xl);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .expectation-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand), transparent);
+    }
+
+    .expectation-card h2 {
       margin: 0;
       font-size: 1.2rem;
+      color: var(--ink-light);
     }
 
-    .expectation p {
+    .expectation-card p {
       margin: 0.5rem 0 0;
       max-width: 62ch;
-      color: var(--muted);
+      color: var(--muted-light);
       line-height: 1.55;
     }
 

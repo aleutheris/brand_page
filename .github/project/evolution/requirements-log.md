@@ -11,6 +11,7 @@ Tracks requirement lifecycle changes (added, changed, deprecated).
 
 ## Entries
 
+- 2026-04-01 | Added | [FR-005](requirements/FR-005.md) | Deliver a modern, technology-forward layout refresh while preserving static-first delivery and accessibility.
 - 2026-03-24 | Added | [FR-001](requirements/FR-001.md) | Deliver hero plus services section to communicate professional positioning and offerings clearly.
 - 2026-03-24 | Added | [FR-002](requirements/FR-002.md) | Deliver projects listing with stable schema-backed cards and detail route structure.
 - 2026-03-24 | Added | [FR-003](requirements/FR-003.md) | Deliver contact section with clear CTA and reliable navigation from top-level menu.

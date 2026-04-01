@@ -26,6 +26,7 @@ User-outcome-oriented backlog for planned and in-progress work.
 - FR-001 | Publish consultant-focused hero and services narrative | Priority: High | Item: `backlog-items/FR-001.md`
 - FR-002 | Publish schema-backed consultant project listing | Priority: High | Item: `backlog-items/FR-002.md`
 - FR-003 | Deliver reliable consultant contact conversion path | Priority: High | Item: `backlog-items/FR-003.md`
+- FR-005 | Modernize layout and technology-forward visual style | Priority: High | Item: `backlog-items/FR-005.md`
 - QR-001 | Enforce CI quality gate baseline | Priority: High | Item: `backlog-items/QR-001.md`
 - OR-001 | Automate GitHub Pages deployment | Priority: High | Item: `backlog-items/OR-001.md`
 - CR-001 | Enforce contract change approval workflow | Priority: Medium | Item: `backlog-items/CR-001.md`
