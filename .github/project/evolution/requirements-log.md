@@ -11,6 +11,7 @@ Tracks requirement lifecycle changes (added, changed, deprecated).
 
 ## Entries
 
+- 2026-04-03 | Added | [FR-007](requirements/FR-007.md) | Keep top-level page layout stable by preventing horizontal shift when scrollbar presence changes between routes.
 - 2026-04-03 | Added | [FR-006](requirements/FR-006.md) | Visibly indicate the active top-level page in the primary navigation using accessible shared-layout behavior.
 - 2026-04-01 | Added | [FR-005](requirements/FR-005.md) | Deliver a modern, technology-forward layout refresh while preserving static-first delivery and accessibility.
 - 2026-03-24 | Added | [FR-001](requirements/FR-001.md) | Deliver hero plus services section to communicate professional positioning and offerings clearly.

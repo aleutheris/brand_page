@@ -1,0 +1,48 @@
+# ADR-BP-005: Stable Scrollbar Gutter
+
+## Workflow
+
+- Drafted by engineering and accepted as a small UX consistency refinement.
+- Stored as a standalone ADR for lifecycle tracking.
+
+Status: Accepted
+Date: 2026-04-03
+Owners: Engineering
+
+## Context
+
+The site contains top-level pages with different amounts of content. On shorter pages, the vertical scrollbar may disappear, while on longer pages it remains visible. This changes the available layout width and makes the page appear to shift sideways during navigation.
+
+## Decision
+
+- Reserve consistent vertical scrollbar space at the root layout using CSS so route changes do not alter the visible page frame.
+- Prefer a shared CSS solution in the base layout instead of per-page workarounds.
+- Keep native scrolling behavior rather than replacing it with custom JavaScript or hover-driven scrollbar logic.
+
+## Alternatives Considered
+
+- Option A: Leave the layout shift as-is.
+- Option B: Implement custom or hover-only scrollbar behavior.
+- Option C: Reserve stable scrollbar space in the shared layout.
+
+## Consequences
+
+- Positive: Smoother page transitions and a more polished visual experience.
+- Positive: Very small implementation footprint with low maintenance cost.
+- Negative: Some browsers may show a persistent scrollbar gutter even on shorter pages.
+- Risks: Browser differences in scrollbar rendering may vary slightly, though the layout remains stable.
+
+## Verification
+
+- Switch between shorter and longer top-level pages and confirm there is no visible horizontal jump.
+- Run lint, format, and build checks successfully.
+
+## Rollback
+
+- Remove the root scrollbar-gutter/overflow rule if future browser support or design changes make it undesirable.
+
+## Links
+
+- Related requirement(s): FR-007, FR-005
+- Related ICR(s): n/a
+- Related PR(s): n/a

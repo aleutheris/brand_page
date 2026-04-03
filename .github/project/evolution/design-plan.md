@@ -13,6 +13,7 @@ All accepted design decisions must be stored as standalone ADR files under `.git
 - [0002-data-contracts-before-dynamics.md](adr/0002-data-contracts-before-dynamics.md) | ADR-BP-002 | Accepted | Data contracts before dynamic behavior.
 - [0003-extension-through-seams.md](adr/0003-extension-through-seams.md) | ADR-BP-003 | Accepted | Extension via feature-local seams.
 - [0004-accessible-active-navigation-state.md](adr/0004-accessible-active-navigation-state.md) | ADR-BP-004 | Accepted | Accessible active-state indication for primary navigation.
+- [0005-stable-scrollbar-gutter.md](adr/0005-stable-scrollbar-gutter.md) | ADR-BP-005 | Accepted | Prevent cross-page layout shift caused by inconsistent scrollbar presence.
 
 ## Process Rule
 
