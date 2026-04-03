@@ -1,0 +1,49 @@
+# ADR-BP-004: Accessible Active Navigation State
+
+## Workflow
+
+- Drafted by engineering and accepted as a usability refinement for primary navigation.
+- Stored as a standalone ADR for lifecycle tracking.
+
+Status: Accepted
+Date: 2026-04-03
+Owners: Engineering
+
+## Context
+
+The top-level navigation previously relied on hover and focus only. Visitors could move between pages without a clear visual indication of which page was currently open, which reduced orientation and made the navigation feel less polished.
+
+## Decision
+
+- Determine the active top-level route in the shared base layout using the current pathname and the existing base-path-aware URL helper.
+- Expose the current page through `aria-current="page"` for accessibility.
+- Apply a persistent visual treatment to the active link that aligns with the existing teal brand styling.
+
+## Alternatives Considered
+
+- Option A: Keep hover-only navigation styling and accept ambiguous current-page state.
+- Option B: Duplicate per-page active classes manually in each page template.
+- Option C: Centralize active-state logic in the shared layout and style it consistently.
+
+## Consequences
+
+- Positive: Better wayfinding, improved accessibility, and a more polished navigation experience.
+- Positive: Lower maintenance because the behavior lives in one shared layout.
+- Negative: Slightly more route-aware logic in the layout.
+- Risks: False highlight behavior if future nested routes require broader matching rules.
+
+## Verification
+
+- Open each top-level route and confirm that exactly one navigation link is highlighted.
+- Confirm `aria-current="page"` appears on the active link.
+- Run build, lint, and formatting checks successfully.
+
+## Rollback
+
+- Remove the active-route helper and revert to the previous hover/focus-only navigation styling if the behavior causes regressions.
+
+## Links
+
+- Related requirement(s): FR-006, FR-005
+- Related ICR(s): n/a
+- Related PR(s): n/a

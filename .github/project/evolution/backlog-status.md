@@ -27,6 +27,7 @@ Cross-reference of backlog items and their current state.
 | FR-003 | Deliver reliable consultant contact conversion path | Done | [FR-003.md](backlog-items/FR-003.md) | [ADR-BP-001](adr/0001-static-first-baseline.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Implemented: contact page with email channel, response expectations, nav entry. |
 | FR-004 | Publish display-only reviews section | Done | [FR-004.md](backlog-items/FR-004.md) | [ADR-BP-002](adr/0002-data-contracts-before-dynamics.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Implemented: reviews page with schema-backed cards, 2 seed records, nav entry. |
 | FR-005 | Modernize layout and technology-forward visual style | Done | [FR-005.md](backlog-items/FR-005.md) | [ADR-BP-001](adr/0001-static-first-baseline.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Implemented: dark hero sections, modern tech-forward palette (slate/teal), Google Fonts (Inter + Space Grotesk), logo in nav, card hover effects, full-bleed page headers, footer, base-path-aware links. |
+| FR-006 | Highlight active top-level page in navigation | Done | [FR-006.md](backlog-items/FR-006.md) | [ADR-BP-004](adr/0004-accessible-active-navigation-state.md) | Implemented: shared layout highlights the current page with accessible `aria-current` styling on Home, Projects, and Contact. |
 
 ## Quality Requirements (QR-*)
 
@@ -50,4 +51,4 @@ Cross-reference of backlog items and their current state.
 
 - Current planning source: `.github/project/evolution/design-plan.md`.
 - Backlog item files under `.github/project/evolution/backlog-items/` are static requirement records.
-- Execution order: `QR-001` + `OR-001` -> `FR-001` -> `FR-002` -> `FR-003` with `CR-001` active as governance gate.
+- Execution order: `QR-001` + `OR-001` -> `FR-001` -> `FR-002` -> `FR-003` -> `FR-005` -> `FR-006` with `CR-001` active as governance gate.
