@@ -1,4 +1,4 @@
-# Brand Page Project Instructions
+# Aleutheris Project Instructions
 
 This file instantiates project-specific instructions without redefining foundational policy.
 
@@ -10,7 +10,7 @@ This file instantiates project-specific instructions without redefining foundati
 
 ## 1. Project Profile
 
-- Project name: Brand Page
+- Project name: Aleutheris
 - Goal: Deliver a fast, accessible, and maintainable professional brand site with a clear path to future portfolio and review workflows.
 - Primary users:
   - Site visitors evaluating services, projects, and contact options.
