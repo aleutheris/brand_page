@@ -62,6 +62,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       position: relative;
     }
 
+    .page-header .wrap {
+      min-height: clamp(14rem, 18vw, 15.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
     .page-header::before {
       content: "";
       position: absolute;
