@@ -1,7 +1,8 @@
 {
-  "title": "Intake and Triage Automation",
-  "businessProblem": "A service business spent too much time sorting inbound requests manually, delaying responses and losing qualified opportunities.",
-  "deliveredSolution": "Built a lightweight intake workflow that auto-categorized requests, routed priorities, and generated a clear next-action queue for the team.",
-  "observedOutcome": "Response time dropped from days to same-day for priority inquiries, with less admin load and more consistent follow-through.",
+  "title": "Autorquin – Quotation Automation",
+  "businessProblem": "Creating and sending quotations by hand was taking too much time. Customer details had to be gathered manually, templates filled in, PDFs prepared, approvals managed, and follow-up emails sent, which slowed responses and made it harder to scale.",
+  "deliveredSolution": "Built Autorquin on Google Workspace to collect customer information through forms, generate branded PDF quotations automatically, manage confirmations, send emails, and keep everything tracked in Google Sheets.",
+  "expectedBenefits": "Faster quotation handling, less manual admin work, more consistent customer communication, and a smoother process as the business grows.",
+  "nextPhase": "The next phase is moving toward an AI-assisted experience, where customers can request quotations through a conversational chat or voice interface and more of the workflow can be handled automatically end to end.",
   "order": 1
 }

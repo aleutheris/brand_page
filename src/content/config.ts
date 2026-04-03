@@ -6,7 +6,9 @@ const projects = defineCollection({
     title: z.string().min(3),
     businessProblem: z.string().min(20),
     deliveredSolution: z.string().min(20),
-    observedOutcome: z.string().min(20),
+    expectedBenefits: z.string().min(20).optional(),
+    observedOutcome: z.string().min(20).optional(),
+    nextPhase: z.string().min(20).optional(),
     order: z.number().int().nonnegative(),
   }),
 });

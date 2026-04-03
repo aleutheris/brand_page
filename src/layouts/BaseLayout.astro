@@ -9,7 +9,6 @@ const { title } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const homeUrl = withBase(base);
 const projectsUrl = withBase(base, "projects/");
-const reviewsUrl = withBase(base, "reviews/");
 const contactUrl = withBase(base, "contact/");
 const logoUrl = withBase(base, "images/logo_with_name.png");
 ---
@@ -98,7 +97,6 @@ const logoUrl = withBase(base, "images/logo_with_name.png");
         <div class="nav-links">
           <a href={homeUrl}>Home</a>
           <a href={projectsUrl}>Projects</a>
-          <a href={reviewsUrl}>Reviews</a>
           <a href={contactUrl}>Contact</a>
         </div>
       </nav>
@@ -109,7 +107,7 @@ const logoUrl = withBase(base, "images/logo_with_name.png");
     <footer>
       <div class="wrap">
         <p>
-          &copy; {new Date().getFullYear()} &middot; AI &amp; Automation Consulting
+          &copy; {new Date().getFullYear()} &middot; Automation Architect &amp; AI Solutions
         </p>
       </div>
     </footer>
