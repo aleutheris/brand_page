@@ -1,5 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const linkedinUrl =
+  "https://linkedin.com/in/ant%C3%B3nio-eleut%C3%A9rio-%F0%9F%87%AA%F0%9F%87%BA-02980145";
 ---
 
 <BaseLayout title="Contact">
@@ -8,9 +11,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <p class="eyebrow">Get in touch</p>
       <h1 id="contact-title">Let's talk about what you'd like to automate</h1>
       <p class="header-desc">
-        If your team is spending too much time on repetitive admin, manual
-        handoffs, or disconnected tools, I can help design a simpler way of
-        working and build the right solution.
+        If you are dealing with repetitive work, messy handoffs, or processes
+        that should be simpler, feel free to reach out. I work directly with
+        businesses and can also support existing teams when needed.
       </p>
     </div>
   </div>
@@ -20,10 +23,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <article class="channel">
         <h2>Email</h2>
         <p>
-          Send a few details about your business, what feels repetitive today,
-          and what you would like to improve.
+          Send a few lines about your business, the repetitive work you want to
+          reduce, or the kind of system you want to improve.
         </p>
         <a href="mailto:info@aleutheris.com">info@aleutheris.com</a>
+      </article>
+
+      <article class="channel">
+        <h2>LinkedIn</h2>
+        <p>
+          If you prefer, you can also connect with me there and get a broader
+          view of my professional background.
+        </p>
+        <a href={linkedinUrl} target="_blank" rel="noreferrer">View LinkedIn</a>
       </article>
 
       <article class="channel">
@@ -44,8 +56,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="expectation-card">
         <h2>Response expectation</h2>
         <p>
-          I usually reply within one business day. If you have a deadline in
-          mind, mention it in your message.
+          I usually reply within one business day. Timezone: CEST. Languages:
+          Portuguese and English.
         </p>
       </div>
     </section>
@@ -100,7 +112,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
     .header-desc {
-      max-width: 56ch;
+      max-width: 58ch;
       margin: 0;
       color: var(--muted-light);
       line-height: 1.6;
@@ -110,7 +122,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       margin-top: 2rem;
       display: grid;
       gap: 1rem;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .channel {

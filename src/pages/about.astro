@@ -4,22 +4,30 @@ import { withBase } from "../lib/withBase";
 
 const base = import.meta.env.BASE_URL;
 const contactUrl = withBase(base, "contact/");
+const linkedinUrl =
+  "https://linkedin.com/in/ant%C3%B3nio-eleut%C3%A9rio-%F0%9F%87%AA%F0%9F%87%BA-02980145";
+
+const profileFacts = [
+  "Based in the Netherlands · CEST timezone",
+  "Portuguese (native) and English (professional)",
+  "MSc in Electrical and Computer Engineering",
+];
 
 const highlights = [
   {
     title: "Engineering depth",
     text:
-      "My background spans embedded systems, Python tooling, C/C++, data-heavy platforms, and software delivery for high-tech products.",
+      "My path has taken me through embedded systems, Python tooling, C/C++, reporting platforms, DevOps, and product delivery in demanding technical environments.",
   },
   {
     title: "Business-first automation",
     text:
-      "I focus on removing repetitive work, simplifying operations, and building systems that people can actually use every day.",
+      "What drives me most is turning repetitive, messy work into clear systems that save time, reduce friction, and create real value for the people using them.",
   },
   {
-    title: "Collaborative delivery",
+    title: "Flexible delivery",
     text:
-      "I enjoy working closely with teams, shaping requirements, improving ways of working, and taking ideas from concept to validation.",
+      "I often work independently with founders and small businesses, and I can also plug into existing teams when a project benefits from closer collaboration.",
   },
 ];
 
@@ -28,20 +36,29 @@ const timeline = [
     period: "Today",
     role: "Founder & Automation Architect",
     summary:
-      "Building practical software products and helping businesses create clearer, more efficient workflows with automation and AI.",
+      "I help businesses simplify operations with automation and AI, while also building products shaped around clarity, ownership, and practical day-to-day value.",
   },
   {
-    period: "ASML, Lightyear, Akkodis",
+    period: "ASML, Lightyear, Akkodis · Netherlands",
     role: "Software, embedded, DevOps, and agile leadership",
     summary:
-      "Worked across Python, C++, embedded systems, migration tooling, reporting, and team delivery in complex engineering environments.",
+      "I worked across high-tech environments on Python tooling, C++ software, embedded systems, migration support, reporting, and team ways of working, always with reliability and impact in mind.",
   },
   {
-    period: "Earlier career",
+    period: "Earlier career · Portugal",
     role: "Consulting, data systems, and teaching",
     summary:
-      "Started in consulting and technical delivery, including big-data platforms, ETL work, and university teaching support.",
+      "My earlier experience included consulting, ETL and big-data platforms, software engineering, and university teaching support, which gave me a solid analytical and communication foundation.",
   },
+];
+
+const interests = [
+  "Staying in shape",
+  "Football",
+  "Entrepreneurship",
+  "Space engineering",
+  "Robotics",
+  "Meaningful impact",
 ];
 ---
 
@@ -49,12 +66,12 @@ const timeline = [
   <div class="page-header">
     <div class="wrap">
       <p class="eyebrow">About me</p>
-      <h1>I build practical systems that make work simpler.</h1>
+      <h1>I care deeply about building systems that make work better.</h1>
       <p class="header-desc">
-        I'm António Eleutério, a software engineer and automation architect based
-        in the Netherlands. My work sits at the intersection of software,
-        operations, and product thinking, helping teams replace manual effort
-        with reliable, useful systems.
+        I'm António Eleutério, an Automation Architect and software engineer
+        based in the Netherlands. With a Master's in Electrical and Computer
+        Engineering and a background across software, embedded systems, and
+        product delivery, I help turn complexity into clear, useful solutions.
       </p>
     </div>
   </div>
@@ -64,25 +81,30 @@ const timeline = [
       <article class="story-card story-card--lead">
         <h2>How I work</h2>
         <p>
-          Since I was young, I have been fascinated by automated systems and the
-          way good engineering can improve everyday life. That curiosity evolved
-          into a career covering embedded software, developer tooling, agile
-          delivery, and product design.
+          Since childhood, I have been fascinated by automation, robotics, and
+          the idea that good engineering can improve the way people live and
+          work. That curiosity grew into a career spanning embedded software,
+          developer tooling, agile delivery, and product design.
         </p>
         <p>
-          Today, I bring that same mindset to business automation: understand the
-          real bottleneck, design the right workflow, and deliver something that
-          is both technically solid and genuinely helpful for the people using
-          it.
+          Today, I bring that same energy into business automation and AI:
+          understand the real bottleneck, design the right workflow, and deliver
+          something that feels simple, solid, and genuinely valuable in daily
+          operations.
         </p>
       </article>
 
-      <article class="story-card story-card--quote">
-        <p class="quote">
-          Clear requirements, thoughtful design, and steady delivery usually beat
-          overcomplicated systems.
-        </p>
-        <a class="cta-link" href={contactUrl}>Let's talk</a>
+      <article class="story-card story-card--profile">
+        <h2>At a glance</h2>
+        <ul class="fact-list">
+          {profileFacts.map((fact) => <li>{fact}</li>)}
+        </ul>
+        <a
+          class="cta-link"
+          href={linkedinUrl}
+          target="_blank"
+          rel="noreferrer">View LinkedIn</a
+        >
       </article>
     </section>
 
@@ -121,13 +143,28 @@ const timeline = [
       <div class="focus-card">
         <h2 id="focus-title">What matters most to me</h2>
         <p>
-          I care about building software that earns its place in a business:
-          tools that reduce friction, improve visibility, and support better
-          decisions without adding unnecessary complexity. I also value healthy
-          collaboration, clear communication, and end-to-end ownership of the
-          work.
+          I believe technology should create meaningful impact in the world.
+          That means reducing friction, making work more human, and helping
+          people focus on what truly matters instead of getting buried in manual
+          processes.
         </p>
       </div>
+    </section>
+
+    <section class="personal" aria-labelledby="personal-title">
+      <article class="story-card">
+        <h2 id="personal-title">Beyond work</h2>
+        <p>
+          Outside of client work, I enjoy staying in shape, playing football,
+          thinking about entrepreneurship, and exploring ideas around space
+          engineering and robotics. They all connect back to the same motivation:
+          keep learning, keep building, and keep aiming for work that matters.
+        </p>
+        <ul class="interest-list">
+          {interests.map((interest) => <li>{interest}</li>)}
+        </ul>
+        <a class="text-link" href={contactUrl}>Want to connect?</a>
+      </article>
     </section>
   </div>
 
@@ -187,7 +224,7 @@ const timeline = [
     }
 
     .header-desc {
-      max-width: 58ch;
+      max-width: 60ch;
       margin: 0;
       color: var(--muted-light);
       line-height: 1.6;
@@ -204,7 +241,7 @@ const timeline = [
     }
 
     .intro-grid {
-      grid-template-columns: 1.6fr 1fr;
+      grid-template-columns: 1.5fr 1fr;
       align-items: stretch;
     }
 
@@ -238,10 +275,7 @@ const timeline = [
       margin-top: 0.8rem;
     }
 
-    .story-card--quote {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .story-card--profile {
       background: linear-gradient(
         135deg,
         rgba(15, 23, 42, 0.98) 0%,
@@ -250,19 +284,25 @@ const timeline = [
       border-color: transparent;
     }
 
-    .quote {
-      margin: 0;
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: 1.2rem;
-      line-height: 1.45;
+    .story-card--profile h2 {
       color: var(--ink-light);
+    }
+
+    .fact-list {
+      margin: 0.9rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--muted-light);
+      line-height: 1.65;
+    }
+
+    .fact-list li + li {
+      margin-top: 0.35rem;
     }
 
     .cta-link {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      align-self: flex-start;
       min-height: 2.6rem;
       margin-top: 1rem;
       padding: 0 1rem;
@@ -281,7 +321,8 @@ const timeline = [
 
     .highlights,
     .journey,
-    .focus {
+    .focus,
+    .personal {
       margin-top: 2rem;
     }
 
@@ -363,6 +404,37 @@ const timeline = [
       max-width: 64ch;
       margin: 0.7rem 0 0;
       color: var(--muted-light);
+    }
+
+    .interest-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
+
+    .interest-list li {
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      background: var(--brand-glow);
+      color: var(--brand-dark);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .text-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--brand-dark);
+      font-weight: 600;
+    }
+
+    .text-link:hover,
+    .text-link:focus-visible {
+      text-decoration: underline;
+      outline: none;
     }
 
     @media (max-width: 900px) {
