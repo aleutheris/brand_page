@@ -1,0 +1,375 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/withBase";
+
+const base = import.meta.env.BASE_URL;
+const contactUrl = withBase(base, "contact/");
+
+const highlights = [
+  {
+    title: "Engineering depth",
+    text:
+      "My background spans embedded systems, Python tooling, C/C++, data-heavy platforms, and software delivery for high-tech products.",
+  },
+  {
+    title: "Business-first automation",
+    text:
+      "I focus on removing repetitive work, simplifying operations, and building systems that people can actually use every day.",
+  },
+  {
+    title: "Collaborative delivery",
+    text:
+      "I enjoy working closely with teams, shaping requirements, improving ways of working, and taking ideas from concept to validation.",
+  },
+];
+
+const timeline = [
+  {
+    period: "Today",
+    role: "Founder & Automation Architect",
+    summary:
+      "Building practical software products and helping businesses create clearer, more efficient workflows with automation and AI.",
+  },
+  {
+    period: "ASML, Lightyear, Akkodis",
+    role: "Software, embedded, DevOps, and agile leadership",
+    summary:
+      "Worked across Python, C++, embedded systems, migration tooling, reporting, and team delivery in complex engineering environments.",
+  },
+  {
+    period: "Earlier career",
+    role: "Consulting, data systems, and teaching",
+    summary:
+      "Started in consulting and technical delivery, including big-data platforms, ETL work, and university teaching support.",
+  },
+];
+---
+
+<BaseLayout title="About Me">
+  <div class="page-header">
+    <div class="wrap">
+      <p class="eyebrow">About me</p>
+      <h1>I build practical systems that make work simpler.</h1>
+      <p class="header-desc">
+        I'm António Eleutério, a software engineer and automation architect based
+        in the Netherlands. My work sits at the intersection of software,
+        operations, and product thinking, helping teams replace manual effort
+        with reliable, useful systems.
+      </p>
+    </div>
+  </div>
+
+  <div class="wrap page-body">
+    <section class="intro-grid" aria-label="About overview">
+      <article class="story-card story-card--lead">
+        <h2>How I work</h2>
+        <p>
+          Since I was young, I have been fascinated by automated systems and the
+          way good engineering can improve everyday life. That curiosity evolved
+          into a career covering embedded software, developer tooling, agile
+          delivery, and product design.
+        </p>
+        <p>
+          Today, I bring that same mindset to business automation: understand the
+          real bottleneck, design the right workflow, and deliver something that
+          is both technically solid and genuinely helpful for the people using
+          it.
+        </p>
+      </article>
+
+      <article class="story-card story-card--quote">
+        <p class="quote">
+          Clear requirements, thoughtful design, and steady delivery usually beat
+          overcomplicated systems.
+        </p>
+        <a class="cta-link" href={contactUrl}>Let's talk</a>
+      </article>
+    </section>
+
+    <section class="highlights" aria-labelledby="strengths-title">
+      <h2 id="strengths-title">What I bring to a project</h2>
+      <div class="highlight-grid">
+        {
+          highlights.map((item) => (
+            <article class="highlight-card">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="journey" aria-labelledby="journey-title">
+      <div class="journey-card">
+        <h2 id="journey-title">A short career journey</h2>
+        <div class="timeline">
+          {
+            timeline.map((item) => (
+              <article class="timeline-item">
+                <p class="timeline-period">{item.period}</p>
+                <h3>{item.role}</h3>
+                <p>{item.summary}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="focus" aria-labelledby="focus-title">
+      <div class="focus-card">
+        <h2 id="focus-title">What matters most to me</h2>
+        <p>
+          I care about building software that earns its place in a business:
+          tools that reduce friction, improve visibility, and support better
+          decisions without adding unnecessary complexity. I also value healthy
+          collaboration, clear communication, and end-to-end ownership of the
+          work.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <style>
+    .page-header {
+      background: linear-gradient(
+        135deg,
+        var(--bg-dark) 0%,
+        var(--bg-dark-end) 100%
+      );
+      padding: clamp(2rem, 5vw, 3.5rem) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(
+          circle at 78% 28%,
+          rgba(20, 184, 166, 0.12) 0%,
+          transparent 50%
+        ),
+        radial-gradient(
+          circle at 15% 85%,
+          rgba(20, 184, 166, 0.07) 0%,
+          transparent 40%
+        );
+      pointer-events: none;
+    }
+
+    .page-header .wrap {
+      min-height: clamp(14rem, 18vw, 15.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0.55rem 0 0.75rem;
+      max-width: 18ch;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.1;
+      text-wrap: balance;
+      color: var(--ink-light);
+    }
+
+    .header-desc {
+      max-width: 58ch;
+      margin: 0;
+      color: var(--muted-light);
+      line-height: 1.6;
+    }
+
+    .page-body {
+      padding-top: 2rem;
+    }
+
+    .intro-grid,
+    .highlight-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .intro-grid {
+      grid-template-columns: 1.6fr 1fr;
+      align-items: stretch;
+    }
+
+    .story-card,
+    .highlight-card {
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      border-top: 3px solid var(--brand);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .story-card h2,
+    .highlights h2,
+    .journey-card h2,
+    .focus-card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .story-card p,
+    .highlight-card p,
+    .timeline-item p,
+    .focus-card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .story-card p + p {
+      margin-top: 0.8rem;
+    }
+
+    .story-card--quote {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.98) 0%,
+        rgba(30, 41, 59, 0.98) 100%
+      );
+      border-color: transparent;
+    }
+
+    .quote {
+      margin: 0;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.45;
+      color: var(--ink-light);
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      min-height: 2.6rem;
+      margin-top: 1rem;
+      padding: 0 1rem;
+      border-radius: var(--radius);
+      background: var(--brand);
+      color: #fff;
+      font-weight: 600;
+      transition: all var(--transition);
+    }
+
+    .cta-link:hover,
+    .cta-link:focus-visible {
+      background: var(--brand-dark);
+      outline: none;
+    }
+
+    .highlights,
+    .journey,
+    .focus {
+      margin-top: 2rem;
+    }
+
+    .highlights h2 {
+      margin-bottom: 1rem;
+    }
+
+    .highlight-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .highlight-card h3,
+    .timeline-item h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .highlight-card p {
+      margin: 0.6rem 0 0;
+    }
+
+    .journey-card,
+    .focus-card {
+      background: linear-gradient(
+        135deg,
+        var(--bg-dark) 0%,
+        var(--bg-dark-end) 100%
+      );
+      border-radius: var(--radius-xl);
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .journey-card::before,
+    .focus-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand), transparent);
+    }
+
+    .journey-card h2,
+    .focus-card h2 {
+      color: var(--ink-light);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .timeline-item {
+      padding: 1rem;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .timeline-item p {
+      margin: 0.45rem 0 0;
+      color: var(--muted-light);
+    }
+
+    .timeline-period {
+      margin: 0;
+      color: var(--brand) !important;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .focus-card p {
+      max-width: 64ch;
+      margin: 0.7rem 0 0;
+      color: var(--muted-light);
+    }
+
+    @media (max-width: 900px) {
+      .intro-grid,
+      .highlight-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

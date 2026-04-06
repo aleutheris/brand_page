@@ -9,6 +9,7 @@ const { title } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const homeUrl = withBase(base);
 const projectsUrl = withBase(base, "projects/");
+const aboutUrl = withBase(base, "about/");
 const contactUrl = withBase(base, "contact/");
 const logoUrl = withBase(base, "images/logo_with_name.png");
 const currentPath = Astro.url.pathname;
@@ -126,6 +127,11 @@ function isActivePath(path: string) {
             href={projectsUrl}
             aria-current={isActivePath(projectsUrl) ? "page" : undefined}
             >Projects</a
+          >
+          <a
+            href={aboutUrl}
+            aria-current={isActivePath(aboutUrl) ? "page" : undefined}
+            >About Me</a
           >
           <a
             href={contactUrl}
