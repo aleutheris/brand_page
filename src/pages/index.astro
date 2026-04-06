@@ -4,6 +4,54 @@ import { withBase } from "../lib/withBase";
 
 const base = import.meta.env.BASE_URL;
 const projectsUrl = withBase(base, "projects/");
+
+const heroSignals = [
+  { symbol: "⚙", label: "Automation" },
+  { symbol: "✦", label: "AI systems" },
+  { symbol: "↗", label: "Operational clarity" },
+];
+
+const services = [
+  {
+    symbol: "⚙",
+    title: "Workflow Automation",
+    text:
+      "Replace manual repetitive tasks with automations that save time, reduce errors, and free your team to focus on higher-value work.",
+  },
+  {
+    symbol: "✦",
+    title: "AI-Enabled Operations",
+    text:
+      "Use AI where it genuinely helps, whether that means speeding up routine tasks, making information easier to work with, or supporting better day-to-day decisions.",
+  },
+  {
+    symbol: "◫",
+    title: "Custom Software Solutions",
+    text:
+      "Design and build focused tools that solve specific business problems, integrate with your workflow, and scale as your operations grow.",
+  },
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Find the friction",
+    text:
+      "Identify where time is being lost, where work stalls, and what should be simplified first.",
+  },
+  {
+    number: "02",
+    title: "Design the right flow",
+    text:
+      "Shape a practical setup that fits the business instead of forcing the business around the tool.",
+  },
+  {
+    number: "03",
+    title: "Deliver and refine",
+    text:
+      "Build something dependable, useful, and ready to support everyday work with less busywork.",
+  },
+];
 ---
 
 <BaseLayout title="Home">
@@ -20,6 +68,16 @@ const projectsUrl = withBase(base, "projects/");
         spot the manual work, design the right system, and build tools your team
         can actually use day to day.
       </p>
+      <div class="signal-list" aria-label="Focus areas">
+        {
+          heroSignals.map((item) => (
+            <span class="signal-chip">
+              <span aria-hidden="true">{item.symbol}</span>
+              {item.label}
+            </span>
+          ))
+        }
+      </div>
       <div class="actions">
         <a
           class="cta-primary"
@@ -35,28 +93,30 @@ const projectsUrl = withBase(base, "projects/");
   <section class="services wrap" aria-label="Core services">
     <h2 class="section-heading">What I deliver</h2>
     <div class="service-grid">
-      <article class="service">
-        <h3>Workflow Automation</h3>
-        <p>
-          Replace manual repetitive tasks with automations that save time,
-          reduce errors, and free your team to focus on higher-value work.
-        </p>
-      </article>
-      <article class="service">
-        <h3>AI-Enabled Operations</h3>
-        <p>
-          Use AI where it genuinely helps, whether that means speeding up
-          routine tasks, making information easier to work with, or supporting
-          better day-to-day decisions.
-        </p>
-      </article>
-      <article class="service">
-        <h3>Custom Software Solutions</h3>
-        <p>
-          Design and build focused tools that solve specific business problems,
-          integrate with your workflow, and scale as your operations grow.
-        </p>
-      </article>
+      {
+        services.map((service) => (
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">{service.symbol}</div>
+            <h3>{service.title}</h3>
+            <p>{service.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="process wrap" aria-labelledby="process-title">
+    <h2 id="process-title" class="section-heading">How I usually approach the work</h2>
+    <div class="process-grid">
+      {
+        processSteps.map((step) => (
+          <article class="step-card">
+            <p class="step-number">{step.number}</p>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </article>
+        ))
+      }
     </div>
   </section>
 
@@ -132,6 +192,26 @@ const projectsUrl = withBase(base, "projects/");
       margin: 0;
       color: var(--muted-light);
       line-height: 1.6;
+    }
+
+    .signal-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .signal-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--ink-light);
+      font-size: 0.84rem;
+      font-weight: 600;
     }
 
     .actions {
@@ -212,6 +292,18 @@ const projectsUrl = withBase(base, "projects/");
       box-shadow: var(--shadow);
     }
 
+    .service-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 0.8rem;
+      background: var(--brand-glow);
+      color: var(--brand-dark);
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+    }
+
     .service h3 {
       margin: 0;
       font-size: 1.05rem;
@@ -222,6 +314,44 @@ const projectsUrl = withBase(base, "projects/");
       color: var(--muted);
       line-height: 1.6;
       font-size: 0.95rem;
+    }
+
+    .process {
+      padding-top: 2rem;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .step-number {
+      margin: 0;
+      color: var(--brand-dark);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .step-card h3 {
+      margin: 0.4rem 0 0;
+      font-size: 1rem;
+    }
+
+    .step-card p:last-child {
+      margin: 0.55rem 0 0;
+      color: var(--muted);
+      line-height: 1.6;
     }
 
     .highlight {
@@ -265,7 +395,8 @@ const projectsUrl = withBase(base, "projects/");
     }
 
     @media (max-width: 900px) {
-      .service-grid {
+      .service-grid,
+      .process-grid {
         grid-template-columns: 1fr;
       }
     }

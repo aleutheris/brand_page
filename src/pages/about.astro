@@ -8,23 +8,26 @@ const linkedinUrl =
   "https://linkedin.com/in/ant%C3%B3nio-eleut%C3%A9rio-%F0%9F%87%AA%F0%9F%87%BA-02980145";
 
 const profileFacts = [
-  "Based in the Netherlands · CEST timezone",
-  "Portuguese (native) and English (professional)",
-  "MSc in Electrical and Computer Engineering",
+  { symbol: "⌂", text: "Based in the Netherlands · CEST timezone" },
+  { symbol: "◎", text: "Portuguese (native) and English (professional)" },
+  { symbol: "◇", text: "MSc in Electrical and Computer Engineering" },
 ];
 
 const highlights = [
   {
+    symbol: "⚙",
     title: "Engineering depth",
     text:
       "My path has taken me through embedded systems, Python tooling, C/C++, reporting platforms, DevOps, and product delivery in demanding technical environments.",
   },
   {
+    symbol: "↗",
     title: "Business-first automation",
     text:
       "What drives me most is turning repetitive, messy work into clear systems that save time, reduce friction, and create real value for the people using them.",
   },
   {
+    symbol: "◌",
     title: "Flexible delivery",
     text:
       "I often work independently with founders and small businesses, and I can also plug into existing teams when a project benefits from closer collaboration.",
@@ -97,7 +100,14 @@ const interests = [
       <article class="story-card story-card--profile">
         <h2>At a glance</h2>
         <ul class="fact-list">
-          {profileFacts.map((fact) => <li>{fact}</li>)}
+          {
+            profileFacts.map((fact) => (
+              <li>
+                <span class="symbol-badge" aria-hidden="true">{fact.symbol}</span>
+                <span>{fact.text}</span>
+              </li>
+            ))
+          }
         </ul>
         <a
           class="cta-link"
@@ -114,6 +124,7 @@ const interests = [
         {
           highlights.map((item) => (
             <article class="highlight-card">
+              <div class="highlight-symbol" aria-hidden="true">{item.symbol}</div>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
             </article>
@@ -289,14 +300,32 @@ const interests = [
     }
 
     .fact-list {
+      list-style: none;
       margin: 0.9rem 0 0;
-      padding-left: 1.1rem;
+      padding: 0;
       color: var(--muted-light);
+    }
+
+    .fact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
       line-height: 1.65;
     }
 
     .fact-list li + li {
-      margin-top: 0.35rem;
+      margin-top: 0.5rem;
+    }
+
+    .symbol-badge {
+      display: inline-grid;
+      place-items: center;
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--brand);
+      flex-shrink: 0;
     }
 
     .cta-link {
@@ -332,6 +361,18 @@ const interests = [
 
     .highlight-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .highlight-symbol {
+      display: inline-grid;
+      place-items: center;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 0.75rem;
+      background: var(--brand-glow);
+      color: var(--brand-dark);
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
     }
 
     .highlight-card h3,

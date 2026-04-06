@@ -7,6 +7,12 @@ const projects = (await getCollection("projects"))
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 1)
   .map(({ id, data }) => ({ id, ...data }));
+
+const projectStages = [
+  { symbol: "01", label: "Manual bottleneck" },
+  { symbol: "02", label: "Automation design" },
+  { symbol: "03", label: "Measured value" },
+];
 ---
 
 <BaseLayout title="Projects">
@@ -21,6 +27,16 @@ const projects = (await getCollection("projects"))
         time-consuming quotation process, with an AI-assisted next phase now in
         development.
       </p>
+      <div class="stage-strip" aria-label="Project flow overview">
+        {
+          projectStages.map((stage) => (
+            <span class="stage-chip">
+              <span class="stage-symbol">{stage.symbol}</span>
+              {stage.label}
+            </span>
+          ))
+        }
+      </div>
     </div>
   </div>
 
@@ -31,18 +47,18 @@ const projects = (await getCollection("projects"))
           <article class="card" aria-labelledby={`${project.id}-title`}>
             <h2 id={`${project.id}-title`}>{project.title}</h2>
 
-            <p class="label">Business problem</p>
+            <p class="label"><span class="label-icon">◇</span>Business problem</p>
             <p>{project.businessProblem}</p>
 
-            <p class="label">Delivered solution</p>
+            <p class="label"><span class="label-icon">⚙</span>Delivered solution</p>
             <p>{project.deliveredSolution}</p>
 
-            <p class="label">Expected benefits</p>
+            <p class="label"><span class="label-icon">↗</span>Expected benefits</p>
             <p>{project.expectedBenefits ?? project.observedOutcome}</p>
 
             {project.nextPhase && (
               <>
-                <p class="label">Next phase</p>
+                <p class="label"><span class="label-icon">✦</span>Next phase</p>
                 <p>{project.nextPhase}</p>
               </>
             )}
@@ -122,6 +138,31 @@ const projects = (await getCollection("projects"))
       line-height: 1.6;
     }
 
+    .stage-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .stage-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--ink-light);
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .stage-symbol {
+      color: var(--brand);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+    }
+
     .cards {
       display: grid;
       gap: 1rem;
@@ -158,12 +199,20 @@ const projects = (await getCollection("projects"))
     }
 
     .label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
       margin-top: 0.75rem;
       color: var(--ink);
       font-weight: 700;
       font-size: 0.82rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
+    }
+
+    .label-icon {
+      color: var(--brand-dark);
+      font-size: 0.95rem;
     }
 
     .next-step {
