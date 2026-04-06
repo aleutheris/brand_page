@@ -14,6 +14,7 @@ All accepted design decisions must be stored as standalone ADR files under `.git
 - [0003-extension-through-seams.md](adr/0003-extension-through-seams.md) | ADR-BP-003 | Accepted | Extension via feature-local seams.
 - [0004-accessible-active-navigation-state.md](adr/0004-accessible-active-navigation-state.md) | ADR-BP-004 | Accepted | Accessible active-state indication for primary navigation.
 - [0005-stable-scrollbar-gutter.md](adr/0005-stable-scrollbar-gutter.md) | ADR-BP-005 | Accepted | Prevent cross-page layout shift caused by inconsistent scrollbar presence.
+- [0006-static-i18n-with-language-prefixed-routes.md](adr/0006-static-i18n-with-language-prefixed-routes.md) | ADR-BP-006 | Proposed | Add multilingual support through static shared components, translation dictionaries, and language-prefixed routes.
 
 ## Process Rule
 

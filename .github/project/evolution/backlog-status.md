@@ -29,6 +29,7 @@ Cross-reference of backlog items and their current state.
 | FR-005 | Modernize layout and technology-forward visual style | Done | [FR-005.md](backlog-items/FR-005.md) | [ADR-BP-001](adr/0001-static-first-baseline.md), [ADR-BP-003](adr/0003-extension-through-seams.md) | Implemented: dark hero sections, modern tech-forward palette (slate/teal), Google Fonts (Inter + Space Grotesk), logo in nav, card hover effects, full-bleed page headers, footer, base-path-aware links. |
 | FR-006 | Highlight active top-level page in navigation | Done | [FR-006.md](backlog-items/FR-006.md) | [ADR-BP-004](adr/0004-accessible-active-navigation-state.md) | Implemented: shared layout highlights the current page with accessible `aria-current` styling on Home, Projects, and Contact. |
 | FR-007 | Prevent scrollbar-induced page shift between routes | Done | [FR-007.md](backlog-items/FR-007.md) | [ADR-BP-005](adr/0005-stable-scrollbar-gutter.md) | Implemented: root layout reserves consistent vertical scrollbar space so switching between shorter and longer pages no longer causes horizontal jump. |
+| FR-009 | Deliver multilingual site experience for English, Dutch, and Portuguese | Refined | [FR-009.md](backlog-items/FR-009.md) | [ADR-BP-006](adr/0006-static-i18n-with-language-prefixed-routes.md) | Planning item: add a shared language switcher, localized content, and localized metadata while preserving the static-first architecture. |
 
 ## Quality Requirements (QR-*)
 
