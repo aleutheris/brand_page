@@ -47,18 +47,26 @@ const projectStages = [
           <article class="card" aria-labelledby={`${project.id}-title`}>
             <h2 id={`${project.id}-title`}>{project.title}</h2>
 
-            <p class="label"><span class="label-icon">◇</span>Business problem</p>
+            <p class="label">
+              <span class="label-icon">◇</span>Business problem
+            </p>
             <p>{project.businessProblem}</p>
 
-            <p class="label"><span class="label-icon">⚙</span>Delivered solution</p>
+            <p class="label">
+              <span class="label-icon">⚙</span>Delivered solution
+            </p>
             <p>{project.deliveredSolution}</p>
 
-            <p class="label"><span class="label-icon">↗</span>Expected benefits</p>
+            <p class="label">
+              <span class="label-icon">↗</span>Expected benefits
+            </p>
             <p>{project.expectedBenefits ?? project.observedOutcome}</p>
 
             {project.nextPhase && (
               <>
-                <p class="label"><span class="label-icon">✦</span>Next phase</p>
+                <p class="label">
+                  <span class="label-icon">✦</span>Next phase
+                </p>
                 <p>{project.nextPhase}</p>
               </>
             )}

@@ -15,20 +15,17 @@ const services = [
   {
     symbol: "⚙",
     title: "Workflow Automation",
-    text:
-      "Replace manual repetitive tasks with automations that save time, reduce errors, and free your team to focus on higher-value work.",
+    text: "Replace manual repetitive tasks with automations that save time, reduce errors, and free your team to focus on higher-value work.",
   },
   {
     symbol: "✦",
     title: "AI-Enabled Operations",
-    text:
-      "Use AI where it genuinely helps, whether that means speeding up routine tasks, making information easier to work with, or supporting better day-to-day decisions.",
+    text: "Use AI where it genuinely helps, whether that means speeding up routine tasks, making information easier to work with, or supporting better day-to-day decisions.",
   },
   {
     symbol: "◫",
     title: "Custom Software Solutions",
-    text:
-      "Design and build focused tools that solve specific business problems, integrate with your workflow, and scale as your operations grow.",
+    text: "Design and build focused tools that solve specific business problems, integrate with your workflow, and scale as your operations grow.",
   },
 ];
 
@@ -36,20 +33,17 @@ const processSteps = [
   {
     number: "01",
     title: "Find the friction",
-    text:
-      "Identify where time is being lost, where work stalls, and what should be simplified first.",
+    text: "Identify where time is being lost, where work stalls, and what should be simplified first.",
   },
   {
     number: "02",
     title: "Design the right flow",
-    text:
-      "Shape a practical setup that fits the business instead of forcing the business around the tool.",
+    text: "Shape a practical setup that fits the business instead of forcing the business around the tool.",
   },
   {
     number: "03",
     title: "Deliver and refine",
-    text:
-      "Build something dependable, useful, and ready to support everyday work with less busywork.",
+    text: "Build something dependable, useful, and ready to support everyday work with less busywork.",
   },
 ];
 ---
@@ -96,7 +90,9 @@ const processSteps = [
       {
         services.map((service) => (
           <article class="service">
-            <div class="service-icon" aria-hidden="true">{service.symbol}</div>
+            <div class="service-icon" aria-hidden="true">
+              {service.symbol}
+            </div>
             <h3>{service.title}</h3>
             <p>{service.text}</p>
           </article>
@@ -106,7 +102,9 @@ const processSteps = [
   </section>
 
   <section class="process wrap" aria-labelledby="process-title">
-    <h2 id="process-title" class="section-heading">How I usually approach the work</h2>
+    <h2 id="process-title" class="section-heading">
+      How I usually approach the work
+    </h2>
     <div class="process-grid">
       {
         processSteps.map((step) => (

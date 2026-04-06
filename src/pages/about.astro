@@ -17,20 +17,17 @@ const highlights = [
   {
     symbol: "⚙",
     title: "Engineering depth",
-    text:
-      "My path has taken me through embedded systems, Python tooling, C/C++, reporting platforms, DevOps, and product delivery in demanding technical environments.",
+    text: "My path has taken me through embedded systems, Python tooling, C/C++, reporting platforms, DevOps, and product delivery in demanding technical environments.",
   },
   {
     symbol: "↗",
     title: "Business-first automation",
-    text:
-      "What drives me most is turning repetitive, messy work into clear systems that save time, reduce friction, and create real value for the people using them.",
+    text: "What drives me most is turning repetitive, messy work into clear systems that save time, reduce friction, and create real value for the people using them.",
   },
   {
     symbol: "◌",
     title: "Flexible delivery",
-    text:
-      "I often work independently with founders and small businesses, and I can also plug into existing teams when a project benefits from closer collaboration.",
+    text: "I often work independently with founders and small businesses, and I can also plug into existing teams when a project benefits from closer collaboration.",
   },
 ];
 
@@ -103,17 +100,16 @@ const interests = [
           {
             profileFacts.map((fact) => (
               <li>
-                <span class="symbol-badge" aria-hidden="true">{fact.symbol}</span>
+                <span class="symbol-badge" aria-hidden="true">
+                  {fact.symbol}
+                </span>
                 <span>{fact.text}</span>
               </li>
             ))
           }
         </ul>
-        <a
-          class="cta-link"
-          href={linkedinUrl}
-          target="_blank"
-          rel="noreferrer">View LinkedIn</a
+        <a class="cta-link" href={linkedinUrl} target="_blank" rel="noreferrer"
+          >View LinkedIn</a
         >
       </article>
     </section>
@@ -124,7 +120,9 @@ const interests = [
         {
           highlights.map((item) => (
             <article class="highlight-card">
-              <div class="highlight-symbol" aria-hidden="true">{item.symbol}</div>
+              <div class="highlight-symbol" aria-hidden="true">
+                {item.symbol}
+              </div>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
             </article>
@@ -168,8 +166,9 @@ const interests = [
         <p>
           Outside of client work, I enjoy staying in shape, playing football,
           thinking about entrepreneurship, and exploring ideas around space
-          engineering and robotics. They all connect back to the same motivation:
-          keep learning, keep building, and keep aiming for work that matters.
+          engineering and robotics. They all connect back to the same
+          motivation: keep learning, keep building, and keep aiming for work
+          that matters.
         </p>
         <ul class="interest-list">
           {interests.map((interest) => <li>{interest}</li>)}
