@@ -20,7 +20,8 @@ Load this file for deeper design review, architecture tradeoff analysis, and qua
 - Operational requirements: `OR-*`
 - Constraint/compliance requirements: `CR-*`
 
-Use class-prefixed IDs as stable references in backlog items, requirements log entries, and implementation artifacts.
+Canonical requirement record names should encode the taxonomy class as `REQ-FR-YYNNNN`, `REQ-QR-YYNNNN`, `REQ-OR-YYNNNN`, or `REQ-CR-YYNNNN`.
+Use class-prefixed IDs as stable references inside backlog items, requirement records, and implementation artifacts.
 
 ## 3. Verification Planning Detail
 

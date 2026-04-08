@@ -90,8 +90,16 @@ All contract changes must use `.github/generic/templates/interface-change-reques
 ## 6. Quality Gate Instantiation
 
 - Requirement taxonomy for project artifacts: `FR` (functional behavior), `QR` (quality attributes), `OR` (operational requirements), `CR` (constraints/compliance).
-- Requirement ID rule: stable class-prefixed IDs (`FR-*`, `QR-*`, `OR-*`, `CR-*`).
-- Terminology rule: avoid generic non-functional label; use explicit requirement classes.
+- Requirement taxonomy rule: encode the requirement class in the canonical record name and keep the stable class-prefixed ID in the content (`FR-*`, `QR-*`, `OR-*`, `CR-*`).
+- Artifact naming rule for this repo:
+  - ADR files: canonical ADR records under `.github/project/evolution/adr/` use `ADR-YYNNNN.md` (for example `ADR-260001.md`).
+  - Requirement files: canonical requirement records under `.github/project/evolution/requirements/` use `REQ-XY-YYNNNN.md` where `XY ∈ {FR, QR, OR, CR}` (for example `REQ-FR-260001.md`).
+  - Backlog item files: vertical delivery slices under `.github/project/evolution/backlog-items/` use `BI-YYNNNN.md` (for example `BI-260001.md`).
+- Artifact-role rule:
+  - ADRs and requirements are horizontal governance artifacts.
+  - Backlog items are vertical, behavior-oriented delivery slices.
+  - Taxonomy prefixes belong in requirement record names and content, not in new backlog filenames.
+- Terminology rule: avoid the generic label `non-functional requirements`; use explicit requirement classes.
 - Portability acceptance checks:
   - Project builds in CI and target host.
   - Static output can be served without hidden environment assumptions.
@@ -120,30 +128,70 @@ Code cohesion defaults (required unless explicitly overridden with rationale):
 
 ## 8. Evolution Tracking
 
+The `.github/project/evolution/` folder tracks the lifecycle of requirements, decisions, and work items for this project.
+
+### Folder Structure and Project Conventions
+
+- `.github/project/evolution/adr/`
+  - Holds Architecture Decision Records for meaningful design and delivery decisions.
+  - Canonical naming uses `ADR-YYNNNN.md`.
+
+- `.github/project/evolution/backlog-items/`
+  - Holds vertical backlog slice files and delivery traceability artifacts.
+  - Canonical naming uses `BI-YYNNNN.md`, with each item linking back to related requirements and ADRs.
+
+- `.github/project/evolution/requirements/`
+  - Holds canonical requirement records, one file per requirement.
+  - Canonical naming uses `REQ-XY-YYNNNN.md` where `XY ∈ {FR, QR, OR, CR}`.
+
+- `.github/project/evolution/requirements-index.md`
+  - Canonical requirement index linking requirement records to related backlog and ADR references.
+  - `requirements-log.md` may remain as a legacy companion during the naming transition.
+
+- `.github/project/evolution/product-backlog.md`
+  - User-outcome-oriented backlog showing planned and in-progress work.
+
+- `.github/project/evolution/backlog-status.md`
+  - Canonical backlog tracker for workflow state and traceability.
+
+### Learnings Folder
+
+- `.github/project/learnings/`
+  - Stores learning records from mistakes, regressions, and repeated pitfalls.
+  - Keep this folder on-demand rather than always-on.
+
+- `.github/project/learnings/index.md`
+  - Lightweight tracker of learning records with links to detailed entries when needed.
+
+### Project-Specific Instantiation
+
 - Decision cadence: record ADRs for cross-cutting, contested, or long-lived architectural decisions.
-- ADR recording rule: one file per ADR under `.github/project/evolution/adr/`; `.github/project/evolution/design-plan.md` is an index only.
 - Review cadence for project instructions: review monthly or when phase changes.
 - Requirement ID allocation: Engineering owner allocates and approves new `FR-*`, `QR-*`, `OR-*`, `CR-*` IDs.
 - Backlog item ownership: feature owner creates and updates backlog item artifacts.
 
-Current tracking artifacts:
+## 9. Loading Matrix Instantiation
 
-- Requirements: `.github/project/evolution/requirements/`
-- ADR notes: `.github/project/evolution/adr/`
-- Backlog status: `.github/project/evolution/backlog-status.md`
-- Product backlog: `.github/project/evolution/product-backlog.md`
-- Requirements log: `.github/project/evolution/requirements-log.md`
-- Learnings index: `.github/project/learnings/index.md`
+Always-on (mandatory):
 
-## 9. Loading Matrix Inheritance
+- `.github/copilot-instructions.md`
+- `.github/generic/process/framework.md`
 
-Loading matrix authority remains in `.github/generic/process/framework.md` (section 9) and must not be redefined here.
+Usually referenced:
 
-Project-specific relevance hints (non-authoritative):
+- `.github/generic/process/llm-software-execution.md`
+- `.github/generic/process/project-instructions.md`
+- `.github/project/project-instructions.md`
+- `.github/project/tech-stack.md`
 
-- Usually referenced for planning and implementation context:
-  - `.github/project/tech-stack.md`
-  - `.github/project/evolution/design-plan.md`
-- On-demand for execution tracking and historical context:
-  - `.github/project/evolution/` artifacts
-  - `.github/project/learnings/` artifacts
+On-demand:
+
+- `.github/project/evolution/` artifacts
+- `.github/project/learnings/` artifacts
+- `.github/generic/templates/` when a task explicitly requires a template
+
+Budget guardrails:
+
+- `copilot-instructions.md` <= 120 lines.
+- Always-on companion files <= 120 lines each.
+- Split on-demand files when they exceed ~400 lines or become review bottlenecks.

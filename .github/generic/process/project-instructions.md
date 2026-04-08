@@ -52,7 +52,15 @@ All contract changes must use `.github/generic/templates/interface-change-reques
 ## 6. Quality Gate Instantiation
 
 - Requirement taxonomy for this project's artifacts: `FR` (functional behavior), `QR` (quality attributes), `OR` (operational requirements), `CR` (constraints/compliance).
-- Requirement ID rule: use stable class-prefixed IDs (`FR-*`, `QR-*`, `OR-*`, `CR-*`) for traceability.
+- Requirement taxonomy rule: encode the requirement class in the canonical record name and keep the stable class-prefixed ID in the content (`FR-*`, `QR-*`, `OR-*`, `CR-*`).
+- Artifact naming rule for instantiated projects:
+  - ADR files: `ADR-YYNNNN.md`
+  - requirement files: `REQ-XY-YYNNNN.md` where `XY ∈ {FR, QR, OR, CR}` (for example `REQ-FR-260001.md`)
+  - backlog item files: `BI-YYNNNN.md`
+- Artifact-role rule:
+  - ADRs and requirements are horizontal artifacts,
+  - backlog items are vertical delivery slices,
+  - taxonomy prefixes belong in requirement record names and content, not backlog filenames.
 - Terminology rule: avoid the generic term `non-functional requirements`; use explicit designation classes.
 - Portability acceptance checks: `<fill>`
 - Maintainability acceptance checks: `<fill>`
@@ -78,34 +86,35 @@ The `.github/project/evolution/` folder tracks the lifecycle of requirements, de
 
 ### Folder Structure (Bootstrap Requirements)
 
-Create the following structure when the project starts for the first time:
+Every instantiated project must create and maintain the following one-file-per-item structure:
 
 - `.github/project/evolution/adr/`
   - Holds Architecture Decision Records documenting key design decisions.
-  - Naming: `0001-decision-title.md`, `0002-decision-title.md`, etc.
+  - Naming: `ADR-YYNNNN.md` (for example `ADR-260001.md`).
   - Template: `.github/generic/templates/adr.template.md`
 
-- `.github/project/evolution/design-plan.md`
-  - ADR index only (no embedded full ADR content).
-  - Must list and link ADR files under `.github/project/evolution/adr/`.
-
 - `.github/project/evolution/backlog-items/`
-  - Holds individual backlog item files, one per requirement or feature.
-  - Naming: Use requirement IDs as filenames: `FR-001.md`, `FR-002.md`, `QR-001.md`, `OR-001.md`, `CR-001.md`
-  - Format: Functional (FR-*), Quality (QR-*), Operational (OR-*), Compliance (CR-*)
+  - Holds individual vertical backlog slice files.
+  - Naming: `BI-YYNNNN.md` (for example `BI-260001.md`).
+  - Backlog items may trace to multiple requirement taxonomy IDs and ADRs.
   - Template: `.github/generic/templates/backlog-item.template.md`
 
-- `.github/project/evolution/requirements-log.md`
-  - Log of all requirement changes over time (additions, modifications, deprecations).
-  - Template: `.github/generic/templates/requirements-log-template.md`
+- `.github/project/evolution/requirements/`
+  - Holds canonical requirement records, one file per requirement.
+  - Naming: `REQ-XY-YYNNNN.md` where `XY ∈ {FR, QR, OR, CR}` (for example `REQ-FR-260001.md`).
+  - Each requirement file carries its own change history and traceability.
+
+- `.github/project/evolution/requirements-index.md`
+  - Canonical requirement index that links all `REQ-XY-*` files and their related ADR/backlog references.
 
 - `.github/project/evolution/product-backlog.md`
   - User-outcome-oriented backlog showing planned and in-progress work.
   - Use workflow states and prioritization rules from `.github/generic/process/product-backlog.md`.
 
 - `.github/project/evolution/backlog-status.md`
-  - Index/tracker file that cross-references all backlog items and their states.
-  - Shows completion status and links to related ADRs.
+  - Canonical backlog index/tracker that cross-references all backlog items and their workflow states.
+  - Shows completion status and links to related ADRs and requirements.
+  - Store item status here rather than duplicating it across overview documents.
   - Template: `.github/generic/templates/backlog-status-template.md`
 
 ### Learnings Folder (On-Demand Knowledge)
@@ -130,8 +139,8 @@ Create a separate learnings folder at project bootstrap:
 
 - Decision cadence: `<fill: how often ADRs are created (e.g., per-milestone, per-major-decision)>`
 - Review cadence for project instructions: `<fill: how often to revisit section 8 guidance>`
-- Requirement ID allocation: `<fill: who assigns FR-*, QR-*, OR-*, CR-* IDs and governance rule>`
-- Backlog item ownership: `<fill: who writes and maintains backlog items>`
+- Requirement ID allocation: `<fill: who assigns REQ-FR-*, REQ-QR-*, REQ-OR-*, and REQ-CR-* records plus their FR/QR/OR/CR taxonomy IDs and governance rule>`
+- Backlog item ownership: `<fill: who writes and maintains vertical backlog items>`
 
 ## 9. Loading Matrix Instantiation
 

@@ -33,7 +33,7 @@ Provide short, actionable guidance for future similar work.
 
 ## 7. Cross-References
 
-- Related backlog items: `<FR-*, QR-*, OR-*, CR-* or links>`
+- Related backlog items / requirements: `<BI-*, REQ-FR-*, REQ-QR-*, REQ-OR-*, REQ-CR-* or links>`
 - Related ADRs: `<adr links or N/A>`
 - Related requirements-log entries: `<links or N/A>`
 

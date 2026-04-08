@@ -7,7 +7,7 @@ Use one row per learning and link to the detailed learning record.
 
 | Learning ID | Title | Category | Summary | Detailed Record | Related Backlog Items | Related ADRs | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| LRN-001 | `<title>` | `<architecture|implementation|testing|operations|delivery>` | `<one-line learning summary>` | [LRN-001-short-title.md](LRN-001-short-title.md) | `<FR-001, QR-002 or N/A>` | `<0001-*.md or N/A>` | Active |
+| LRN-001 | `<title>` | `<architecture|implementation|testing|operations|delivery>` | `<one-line learning summary>` | [LRN-001-short-title.md](LRN-001-short-title.md) | `<BI-260001, REQ-FR-260001 or N/A>` | `<ADR-260001.md or N/A>` | Active |
 
 ## Tracker Rules
 

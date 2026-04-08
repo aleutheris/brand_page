@@ -4,7 +4,7 @@ Use this template for value-focused backlog entries.
 
 Status is tracked in the project's backlog status index file, not in backlog item files.
 
-- Backlog Item ID: `<FR-001 | QR-001 | OR-001 | CR-001>`
+- Backlog Item ID: `<BI-YYNNNN>`
 - Title: `<short value-oriented title>`
 - Persona/Actor: `<who benefits>`
 - Value statement: `For <persona>, deliver <capability> to achieve <outcome>.`
@@ -23,7 +23,7 @@ Status is tracked in the project's backlog status index file, not in backlog ite
 - Priority score: `<numeric value>`
 - Target window: `<sprint/release>`
 - Links:
-  - Requirement entry: `<requirements-log reference or n/a>`
+  - Requirement entry: `<REQ-FR-YYNNNN.md | REQ-QR-YYNNNN.md | REQ-OR-YYNNNN.md | REQ-CR-YYNNNN.md | n/a>`
   - ADR: `<adr reference or n/a>`
   - ICR: `<icr reference or n/a>`
   - PR/changeset: `<reference or n/a>`

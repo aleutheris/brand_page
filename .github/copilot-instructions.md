@@ -36,14 +36,8 @@ Usually-referenced loading triggers:
 - When present, load `.github/project/project-instructions.md` for project-instantiated governance details.
 - For prioritization and planning tasks, load `.github/generic/process/product-backlog.md`.
 
-## Instruction Hierarchy (Authority Order)
+## Authority and Loading Note
 
-When guidance conflicts, higher-level policy wins.
-
-1. `.github/copilot-instructions.md`
-2. `.github/generic/process/framework.md`
-3. `.github/generic/process/project-instructions.md`
-4. `.github/generic/process/llm-software-execution.md`
-5. `.github/generic/process/product-backlog.md`
-6. `.github/project/` instruction artifacts
-7. Code and test files
+- Keep this file concise and repository-generic.
+- The canonical authority and loading policy lives in `.github/generic/process/framework.md`.
+- Prefer referencing deeper governance files instead of restating their full hierarchy here.

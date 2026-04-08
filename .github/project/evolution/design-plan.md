@@ -9,12 +9,12 @@ All accepted design decisions must be stored as standalone ADR files under `.git
 
 ## ADR Index
 
-- [0001-static-first-baseline.md](adr/0001-static-first-baseline.md) | ADR-BP-001 | Accepted | Static-first baseline.
-- [0002-data-contracts-before-dynamics.md](adr/0002-data-contracts-before-dynamics.md) | ADR-BP-002 | Accepted | Data contracts before dynamic behavior.
-- [0003-extension-through-seams.md](adr/0003-extension-through-seams.md) | ADR-BP-003 | Accepted | Extension via feature-local seams.
-- [0004-accessible-active-navigation-state.md](adr/0004-accessible-active-navigation-state.md) | ADR-BP-004 | Accepted | Accessible active-state indication for primary navigation.
-- [0005-stable-scrollbar-gutter.md](adr/0005-stable-scrollbar-gutter.md) | ADR-BP-005 | Accepted | Prevent cross-page layout shift caused by inconsistent scrollbar presence.
-- [0006-static-i18n-with-language-prefixed-routes.md](adr/0006-static-i18n-with-language-prefixed-routes.md) | ADR-BP-006 | Proposed | Add multilingual support through static shared components, translation dictionaries, and language-prefixed routes.
+- [ADR-260001.md](adr/ADR-260001.md) | ADR-260001 | Accepted | Static-first baseline.
+- [ADR-260002.md](adr/ADR-260002.md) | ADR-260002 | Accepted | Data contracts before dynamic behavior.
+- [ADR-260003.md](adr/ADR-260003.md) | ADR-260003 | Accepted | Extension via feature-local seams.
+- [ADR-260004.md](adr/ADR-260004.md) | ADR-260004 | Accepted | Accessible active-state indication for primary navigation.
+- [ADR-260005.md](adr/ADR-260005.md) | ADR-260005 | Accepted | Prevent cross-page layout shift caused by inconsistent scrollbar presence.
+- [ADR-260006.md](adr/ADR-260006.md) | ADR-260006 | Proposed | Add multilingual support through static shared components, translation dictionaries, and language-prefixed routes.
 
 ## Process Rule
 

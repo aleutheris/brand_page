@@ -1,31 +1,12 @@
 # Backlog Status Tracker
 
-Index of all requirements and work items, tracking completion status and linking to detailed specifications and related decisions.
+Index of the current vertical backlog items and their traceability to requirements and design decisions.
+Backlog IDs use the neutral `BI-YYNNNN` format; requirement taxonomy stays in the `Related Requirements` column.
 
-## Functional Requirements (FR-*)
-
-| ID | Title | Status | Backlog Item | Related ADRs | Notes |
-| --- | --- | --- | --- | --- | --- |
-| FR-001 | `<title>` | Idea / Refined / Ready / In Progress / Done / Observed | [FR-001.md](backlog-items/FR-001.md) | [0001-...](adr/0001-....md) | `<brief description>` |
-| FR-002 | `<title>` | `<status>` | [FR-002.md](backlog-items/FR-002.md) | `<links or N/A>` | `<notes>` |
-
-## Quality Requirements (QR-*)
-
-| ID | Title | Status | Backlog Item | Related ADRs | Notes |
-| --- | --- | --- | --- | --- | --- |
-| QR-001 | `<title>` | `<status>` | [QR-001.md](backlog-items/QR-001.md) | `<links or N/A>` | `<notes>` |
-
-## Operational Requirements (OR-*)
-
-| ID | Title | Status | Backlog Item | Related ADRs | Notes |
-| --- | --- | --- | --- | --- | --- |
-| OR-001 | `<title>` | `<status>` | [OR-001.md](backlog-items/OR-001.md) | `<links or N/A>` | `<notes>` |
-
-## Compliance/Constraint Requirements (CR-*)
-
-| ID | Title | Status | Backlog Item | Related ADRs | Notes |
-| --- | --- | --- | --- | --- | --- |
-| CR-001 | `<title>` | `<status>` | [CR-001.md](backlog-items/CR-001.md) | `<links or N/A>` | `<notes>` |
+| Backlog ID | Title | Status | Backlog Item | Related Requirements | Related ADRs | Notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| BI-260001 | `<title>` | Idea / Refined / Ready / In Progress / Done / Observed | [BI-260001.md](backlog-items/BI-260001.md) | `REQ-FR-*`, `REQ-QR-*`, `REQ-OR-*`, `REQ-CR-*` as relevant | [ADR-260001](adr/ADR-260001.md) | `<brief description>` |
+| BI-260002 | `<title>` | `<status>` | [BI-260002.md](backlog-items/BI-260002.md) | `<related requirement IDs or n/a>` | `<links or n/a>` | `<notes>` |
 
 ## Workflow States
 
