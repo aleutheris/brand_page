@@ -13,7 +13,7 @@ Tracks requirement lifecycle changes (added, changed, deprecated).
 
 ## Entries
 
-- 2026-04-06 | Added | [FR-009](requirements/REQ-FR-260009.md) | Add multilingual site support for English, Dutch, and Portuguese using a static-first routing and translation approach.
+- 2026-04-08 | Added | [FR-010](requirements/REQ-FR-260010.md) | Deliver responsive navigation menu for mobile devices to prevent horizontal overflow and improve usability on small screens.
 - 2026-04-03 | Added | [FR-007](requirements/REQ-FR-260007.md) | Keep top-level page layout stable by preventing horizontal shift when scrollbar presence changes between routes.
 - 2026-04-03 | Added | [FR-006](requirements/REQ-FR-260006.md) | Visibly indicate the active top-level page in the primary navigation using accessible shared-layout behavior.
 - 2026-04-01 | Added | [FR-005](requirements/REQ-FR-260005.md) | Deliver a modern, technology-forward layout refresh while preserving static-first delivery and accessibility.

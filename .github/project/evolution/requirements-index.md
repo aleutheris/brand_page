@@ -4,6 +4,7 @@ Canonical index of project requirement records and their latest status.
 
 ## Current Requirement Records
 
+- [FR-010](requirements/REQ-FR-260010.md) — Deliver responsive navigation menu for mobile devices to prevent horizontal overflow and improve usability on small screens.
 - [FR-009](requirements/REQ-FR-260009.md) — Add multilingual site support for English, Dutch, and Portuguese using a static-first routing and translation approach.
 - [FR-007](requirements/REQ-FR-260007.md) — Keep top-level page layout stable by preventing horizontal shift when scrollbar presence changes between routes.
 - [FR-006](requirements/REQ-FR-260006.md) — Visibly indicate the active top-level page in the primary navigation using accessible shared-layout behavior.

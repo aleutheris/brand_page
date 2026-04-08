@@ -30,6 +30,7 @@ Cross-reference of backlog items and their current state.
 | FR-006 | Highlight active top-level page in navigation | Done | [BI-260006.md](backlog-items/BI-260006.md) | [ADR-260004](adr/ADR-260004.md) | Implemented: shared layout highlights the current page with accessible `aria-current` styling on Home, Projects, and Contact. |
 | FR-007 | Prevent scrollbar-induced page shift between routes | Done | [BI-260007.md](backlog-items/BI-260007.md) | [ADR-260005](adr/ADR-260005.md) | Implemented: root layout reserves consistent vertical scrollbar space so switching between shorter and longer pages no longer causes horizontal jump. |
 | FR-009 | Deliver multilingual site experience for English, Dutch, and Portuguese | Done | [BI-260009.md](backlog-items/BI-260009.md) | [ADR-260006](adr/ADR-260006.md) | Implemented: Dutch and Portuguese route sets, shared language switcher, localized metadata, and preserved English default routes; verified by production build (`15 page(s) built`). |
+| FR-010 | Deliver responsive navigation menu for mobile devices | Done | [BI-260010.md](backlog-items/BI-260010.md) | [ADR-260010](adr/ADR-260010.md) | Implemented: hamburger menu with overlay, mobile navigation, accessibility features, and responsive behavior. Build, type check, lint, and format all pass. |
 
 ## Quality Requirements (QR-*)
 
