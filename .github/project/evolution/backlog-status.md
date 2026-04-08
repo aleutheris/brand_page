@@ -29,19 +29,19 @@ Cross-reference of backlog items and their current state.
 | FR-005 | Modernize layout and technology-forward visual style | Done | [BI-260005.md](backlog-items/BI-260005.md) | [ADR-260001](adr/ADR-260001.md), [ADR-260003](adr/ADR-260003.md) | Implemented: dark hero sections, modern tech-forward palette (slate/teal), Google Fonts (Inter + Space Grotesk), logo in nav, card hover effects, full-bleed page headers, footer, base-path-aware links. |
 | FR-006 | Highlight active top-level page in navigation | Done | [BI-260006.md](backlog-items/BI-260006.md) | [ADR-260004](adr/ADR-260004.md) | Implemented: shared layout highlights the current page with accessible `aria-current` styling on Home, Projects, and Contact. |
 | FR-007 | Prevent scrollbar-induced page shift between routes | Done | [BI-260007.md](backlog-items/BI-260007.md) | [ADR-260005](adr/ADR-260005.md) | Implemented: root layout reserves consistent vertical scrollbar space so switching between shorter and longer pages no longer causes horizontal jump. |
-| FR-009 | Deliver multilingual site experience for English, Dutch, and Portuguese | Refined | [BI-260009.md](backlog-items/BI-260009.md) | [ADR-260006](adr/ADR-260006.md) | Planning item: add a shared language switcher, localized content, and localized metadata while preserving the static-first architecture. |
+| FR-009 | Deliver multilingual site experience for English, Dutch, and Portuguese | Done | [BI-260009.md](backlog-items/BI-260009.md) | [ADR-260006](adr/ADR-260006.md) | Implemented: Dutch and Portuguese route sets, shared language switcher, localized metadata, and preserved English default routes; verified by production build (`15 page(s) built`). |
 
 ## Quality Requirements (QR-*)
 
 | ID | Title | Status | Backlog Item | Related ADRs | Notes |
 | --- | --- | --- | --- | --- | --- |
-| QR-001 | Enforce CI quality gate baseline | In Progress | [BI-260101.md](backlog-items/BI-260101.md) | [ADR-260001](adr/ADR-260001.md) | CI workflow (typecheck, lint, format:check, build) is green on PRs. Remaining: enable branch protection required checks in GitHub repo Settings → Branches. |
+| QR-001 | Enforce CI quality gate baseline | In Progress | [BI-260101.md](backlog-items/BI-260101.md) | [ADR-260001](adr/ADR-260001.md) | Repo-side work is in place: CI runs `check`, `lint`, `format:check`, and `build`, and a PR template now includes the required validation + contract metadata. Remaining: keep the `CI Quality Gates` workflow selected as a required check in GitHub repo Settings → Branches. |
 
 ## Operational Requirements (OR-*)
 
 | ID | Title | Status | Backlog Item | Related ADRs | Notes |
 | --- | --- | --- | --- | --- | --- |
-| OR-001 | Automate GitHub Pages deployment | In Progress | [BI-260201.md](backlog-items/BI-260201.md) | [ADR-260001](adr/ADR-260001.md) | Workflow implemented with GitHub Pages default URL/base path and deployment provenance; .nojekyll present. Remaining: confirm Pages source is "GitHub Actions" in repo Settings → Pages. |
+| OR-001 | Automate GitHub Pages deployment | Done | [BI-260201.md](backlog-items/BI-260201.md) | [ADR-260001](adr/ADR-260001.md) | Verified: GitHub Pages workflow publishes deterministically with commit provenance, and the site is live at `https://aleutheris.com`. |
 
 ## Compliance/Constraint Requirements (CR-*)
 

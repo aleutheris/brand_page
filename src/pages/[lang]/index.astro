@@ -1,75 +1,36 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { withBase } from "../lib/withBase";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  buildPageHref,
+  getLocaleOrThrow,
+  getLocaleStaticPaths,
+} from "../../lib/i18n";
+import { getCopy } from "../../lib/siteCopy";
 
+export function getStaticPaths() {
+  return getLocaleStaticPaths();
+}
+
+const locale = getLocaleOrThrow(Astro.params.lang);
+const copy = getCopy(locale).home;
 const base = import.meta.env.BASE_URL;
-const projectsUrl = withBase(base, "projects/");
-
-const heroSignals = [
-  { symbol: "⚙", label: "Automation" },
-  { symbol: "✦", label: "AI systems" },
-  { symbol: "↗", label: "Operational clarity" },
-];
-
-const services = [
-  {
-    symbol: "⚙",
-    title: "Workflow Automation",
-    text: "Replace manual repetitive tasks with automations that save time, reduce errors, and free your team to focus on higher-value work.",
-  },
-  {
-    symbol: "✦",
-    title: "AI-Enabled Operations",
-    text: "Use AI where it genuinely helps, whether that means speeding up routine tasks, making information easier to work with, or supporting better day-to-day decisions.",
-  },
-  {
-    symbol: "◫",
-    title: "Custom Software Solutions",
-    text: "Design and build focused tools that solve specific business problems, integrate with your workflow, and scale as your operations grow.",
-  },
-];
-
-const processSteps = [
-  {
-    number: "01",
-    title: "Find the friction",
-    text: "Identify where time is being lost, where work stalls, and what should be simplified first.",
-  },
-  {
-    number: "02",
-    title: "Design the right flow",
-    text: "Shape a practical setup that fits the business instead of forcing the business around the tool.",
-  },
-  {
-    number: "03",
-    title: "Deliver and refine",
-    text: "Build something dependable, useful, and ready to support everyday work with less busywork.",
-  },
-];
+const projectsUrl = buildPageHref(base, "projects", locale);
 ---
 
 <BaseLayout
-  title="Home"
-  description="Automation Architect helping small businesses simplify repetitive work with AI, automation, and practical software systems."
-  locale="en"
+  title={copy.title}
+  description={copy.description}
+  locale={locale}
   pageKey="home"
 >
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap">
-      <p class="eyebrow">Automation Architect &amp; AI Solutions</p>
-      <h1 id="hero-title">
-        I help small businesses automate repetitive work so their teams can
-        focus on what matters most.
-      </h1>
-      <p class="intro">
-        I am an Automation Architect and software engineer focused on AI,
-        automation, and practical software solutions for small business teams. I
-        spot the manual work, design the right system, and build tools your team
-        can actually use day to day.
-      </p>
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h1 id="hero-title">{copy.heading}</h1>
+      <p class="intro">{copy.intro}</p>
       <div class="signal-list" aria-label="Focus areas">
         {
-          heroSignals.map((item) => (
+          copy.heroSignals.map((item) => (
             <span class="signal-chip">
               <span aria-hidden="true">{item.symbol}</span>
               {item.label}
@@ -82,18 +43,18 @@ const processSteps = [
           class="cta-primary"
           href="https://calendar.app.google/gcoCqbNkVPxps5ee6"
           target="_blank"
-          rel="noreferrer">Schedule a Call</a
+          rel="noreferrer">{copy.primaryCta}</a
         >
-        <a class="cta-secondary" href={projectsUrl}>View Projects</a>
+        <a class="cta-secondary" href={projectsUrl}>{copy.secondaryCta}</a>
       </div>
     </div>
   </section>
 
   <section class="services wrap" aria-label="Core services">
-    <h2 class="section-heading">What I deliver</h2>
+    <h2 class="section-heading">{copy.sectionHeading}</h2>
     <div class="service-grid">
       {
-        services.map((service) => (
+        copy.services.map((service) => (
           <article class="service">
             <div class="service-icon" aria-hidden="true">
               {service.symbol}
@@ -107,12 +68,10 @@ const processSteps = [
   </section>
 
   <section class="process wrap" aria-labelledby="process-title">
-    <h2 id="process-title" class="section-heading">
-      How I usually approach the work
-    </h2>
+    <h2 id="process-title" class="section-heading">{copy.processHeading}</h2>
     <div class="process-grid">
       {
-        processSteps.map((step) => (
+        copy.processSteps.map((step) => (
           <article class="step-card">
             <p class="step-number">{step.number}</p>
             <h3>{step.title}</h3>
@@ -126,11 +85,8 @@ const processSteps = [
   <section class="highlight" aria-label="Primary offer summary">
     <div class="wrap">
       <div class="highlight-card">
-        <h2>Clear process. Useful systems. Less busywork.</h2>
-        <p>
-          If parts of your business feel messy, repetitive, or too manual, I can
-          help simplify them and build a setup that works better day to day.
-        </p>
+        <h2>{copy.highlightTitle}</h2>
+        <p>{copy.highlightText}</p>
       </div>
     </div>
   </section>
@@ -263,102 +219,65 @@ const processSteps = [
       outline: none;
     }
 
-    .services {
-      padding: 3rem 0 0;
+    .services,
+    .process,
+    .highlight {
+      padding-top: 2rem;
     }
 
     .section-heading {
-      margin: 0 0 1.25rem;
+      margin: 0 0 1rem;
       font-size: 1.35rem;
-      color: var(--ink);
     }
 
-    .service-grid {
+    .service-grid,
+    .process-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .service {
-      background: var(--surface);
+    .service,
+    .step-card {
       border: 1px solid var(--stroke);
       border-top: 3px solid var(--brand);
       border-radius: var(--radius-lg);
+      background: var(--surface);
       padding: 1.25rem;
-      transition:
-        transform var(--transition),
-        box-shadow var(--transition);
-    }
-
-    .service:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-sm);
     }
 
     .service-icon {
       display: inline-grid;
       place-items: center;
-      width: 2.4rem;
-      height: 2.4rem;
-      border-radius: 0.8rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 0.75rem;
       background: var(--brand-glow);
       color: var(--brand-dark);
-      font-size: 1.1rem;
+      font-size: 1rem;
       margin-bottom: 0.8rem;
     }
 
-    .service h3 {
-      margin: 0;
-      font-size: 1.05rem;
-    }
-
-    .service p {
-      margin: 0.6rem 0 0;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 0.95rem;
-    }
-
-    .process {
-      padding-top: 2rem;
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .step-card {
-      background: var(--surface);
-      border: 1px solid var(--stroke);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .step-number {
-      margin: 0;
-      color: var(--brand-dark);
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-    }
-
+    .service h3,
     .step-card h3 {
-      margin: 0.4rem 0 0;
+      margin: 0;
       font-size: 1rem;
     }
 
-    .step-card p:last-child {
-      margin: 0.55rem 0 0;
+    .service p,
+    .step-card p,
+    .highlight-card p {
       color: var(--muted);
       line-height: 1.6;
     }
 
-    .highlight {
-      padding: 2.5rem 0 0;
+    .step-number {
+      margin: 0 0 0.35rem;
+      color: var(--brand-dark) !important;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .highlight-card {
@@ -385,15 +304,13 @@ const processSteps = [
 
     .highlight-card h2 {
       margin: 0;
-      font-size: clamp(1.15rem, 2vw, 1.35rem);
       color: var(--ink-light);
-      text-wrap: balance;
+      font-size: 1.25rem;
     }
 
     .highlight-card p {
-      margin: 0.6rem 0 0;
+      margin: 0.65rem 0 0;
       color: var(--muted-light);
-      line-height: 1.6;
       max-width: 60ch;
     }
 

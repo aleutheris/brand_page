@@ -1,69 +1,63 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getLocaleOrThrow, getLocaleStaticPaths } from "../../lib/i18n";
+import { getCopy } from "../../lib/siteCopy";
 
+export function getStaticPaths() {
+  return getLocaleStaticPaths();
+}
+
+const locale = getLocaleOrThrow(Astro.params.lang);
+const copy = getCopy(locale).contact;
 const linkedinUrl =
   "https://linkedin.com/in/ant%C3%B3nio-eleut%C3%A9rio-%F0%9F%87%AA%F0%9F%87%BA-02980145";
 ---
 
 <BaseLayout
-  title="Contact"
-  description="Get in touch to discuss automation, AI, and practical software solutions for your business."
-  locale="en"
+  title={copy.title}
+  description={copy.description}
+  locale={locale}
   pageKey="contact"
 >
   <div class="page-header">
     <div class="wrap">
-      <p class="eyebrow">Get in touch</p>
-      <h1 id="contact-title">Let's talk about what you'd like to automate</h1>
-      <p class="header-desc">
-        If you are dealing with repetitive work, messy handoffs, or processes
-        that should be simpler, feel free to reach out. I work directly with
-        businesses and can also support existing teams when needed.
-      </p>
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h1 id="contact-title">{copy.heading}</h1>
+      <p class="header-desc">{copy.headerDesc}</p>
     </div>
   </div>
 
   <div class="wrap">
     <section class="channels" aria-label="Contact channels">
       <article class="channel">
-        <h2>Email</h2>
-        <p>
-          Send a few lines about your business, the repetitive work you want to
-          reduce, or the kind of system you want to improve.
-        </p>
-        <a href="mailto:info@aleutheris.com">info@aleutheris.com</a>
+        <h2>{copy.channels[0].title}</h2>
+        <p>{copy.channels[0].text}</p>
+        <a href="mailto:info@aleutheris.com">{copy.channels[0].label}</a>
       </article>
 
       <article class="channel">
-        <h2>LinkedIn</h2>
-        <p>
-          If you prefer, you can also connect with me there and get a broader
-          view of my professional background.
-        </p>
-        <a href={linkedinUrl} target="_blank" rel="noreferrer">View LinkedIn</a>
+        <h2>{copy.channels[1].title}</h2>
+        <p>{copy.channels[1].text}</p>
+        <a href={linkedinUrl} target="_blank" rel="noreferrer"
+          >{copy.channels[1].label}</a
+        >
       </article>
 
       <article class="channel">
-        <h2>Schedule a Call</h2>
-        <p>
-          If you would rather talk it through first, send me a quick note and we
-          can set up a short call.
-        </p>
+        <h2>{copy.channels[2].title}</h2>
+        <p>{copy.channels[2].text}</p>
         <a
           href="https://calendar.app.google/gcoCqbNkVPxps5ee6"
           target="_blank"
-          rel="noreferrer">Schedule a call</a
+          rel="noreferrer">{copy.channels[2].label}</a
         >
       </article>
     </section>
 
     <section class="expectation" aria-label="Response expectations">
       <div class="expectation-card">
-        <h2>Response expectation</h2>
-        <p>
-          I usually reply within one business day. Timezone: CEST. Languages:
-          Portuguese and English.
-        </p>
+        <h2>{copy.responseTitle}</h2>
+        <p>{copy.responseText}</p>
       </div>
     </section>
   </div>

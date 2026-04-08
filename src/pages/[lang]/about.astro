@@ -1,123 +1,50 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { withBase } from "../lib/withBase";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  buildPageHref,
+  getLocaleOrThrow,
+  getLocaleStaticPaths,
+} from "../../lib/i18n";
+import { getCopy } from "../../lib/siteCopy";
 
+export function getStaticPaths() {
+  return getLocaleStaticPaths();
+}
+
+const locale = getLocaleOrThrow(Astro.params.lang);
+const copy = getCopy(locale).about;
 const base = import.meta.env.BASE_URL;
-const contactUrl = withBase(base, "contact/");
+const contactUrl = buildPageHref(base, "contact", locale);
 const linkedinUrl =
   "https://linkedin.com/in/ant%C3%B3nio-eleut%C3%A9rio-%F0%9F%87%AA%F0%9F%87%BA-02980145";
-
-const profileFacts = [
-  { symbol: "⌂", text: "Based in the Netherlands for 9+ years" },
-  { symbol: "◎", text: "Portuguese (native) and English (professional)" },
-  { symbol: "◇", text: "MSc in Electrical and Computer Engineering" },
-];
-
-const highlights = [
-  {
-    symbol: "⚙",
-    title: "Engineering depth",
-    text: "My path has taken me through embedded systems, Python tooling, C/C++, reporting platforms, DevOps, and product delivery in demanding technical environments.",
-  },
-  {
-    symbol: "↗",
-    title: "Business-first automation",
-    text: "What drives me most is turning repetitive, messy work into clear systems that save time, reduce friction, and create real value for the people using them.",
-  },
-  {
-    symbol: "◌",
-    title: "Flexible delivery",
-    text: "I often work independently with founders and small businesses, and I can also plug into existing teams when a project benefits from closer collaboration.",
-  },
-];
-
-const timeline = [
-  {
-    period: "May 2024 – Today · nearly 2 years",
-    role: "Founder & Automation Architect · Aleutheris",
-    summary:
-      "I help businesses simplify operations with automation and AI while building products end to end—from understanding the bottleneck to designing workflows and delivering practical, usable systems.",
-  },
-  {
-    period: "Apr 2023 – May 2024 · 1 year",
-    role: "DevOps Engineer & Agile Coach · Akkodis / ASML",
-    summary:
-      "I built Python tooling that supported ASML's migration from ClearCase to GitHub and contributed to stronger agile ways of working across internal solution teams.",
-  },
-  {
-    period: "Sep 2021 – Feb 2023 · 1.5 years",
-    role: "Embedded Software Engineer · Lightyear",
-    summary:
-      "At Lightyear, I worked on drive-by-wire and exterior vehicle systems for the Lightyear 0, using C, STM32, RTOS, CAN, and close collaboration with controls and product teams.",
-  },
-  {
-    period: "Feb 2017 – Aug 2021 · 4.5 years",
-    role: "Software Design Engineer · ASML",
-    summary:
-      "At ASML, I developed Python calibration tooling and C++ reporting components for TWINSCAN systems, including work that helped deliver a 10x faster alignment-sensor reporting flow.",
-  },
-  {
-    period: "2011 – 2017 · Portugal",
-    role: "Consulting, data engineering, and teaching",
-    summary:
-      "Earlier in my career, I worked across ETL and big-data systems, software engineering, and university teaching support—building the analytical and communication base I still bring to projects today.",
-  },
-];
-
-const interests = [
-  "Staying in shape",
-  "Football",
-  "Entrepreneurship",
-  "Space engineering",
-  "Robotics",
-  "Meaningful impact",
-];
 ---
 
 <BaseLayout
-  title="About Me"
-  description="Learn more about António Eleutério—Automation Architect, software engineer, and builder of practical AI and automation solutions."
-  locale="en"
+  title={copy.title}
+  description={copy.description}
+  locale={locale}
   pageKey="about"
 >
   <div class="page-header">
     <div class="wrap">
-      <p class="eyebrow">About me</p>
-      <h1>I care deeply about building systems that make work better.</h1>
-      <p class="header-desc">
-        I'm António Eleutério, an Automation Architect and software engineer
-        based in the Netherlands. With a Master's in Electrical and Computer
-        Engineering and a background across software, embedded systems, and
-        product delivery, I help turn complexity into clear, useful solutions.
-      </p>
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h1>{copy.heading}</h1>
+      <p class="header-desc">{copy.headerDesc}</p>
     </div>
   </div>
 
   <div class="wrap page-body">
     <section class="intro-grid" aria-label="About overview">
       <article class="story-card story-card--lead">
-        <h2>How I work</h2>
-        <p>
-          Since childhood, I have been fascinated by automation, robotics, and
-          the idea that good engineering can improve the way people live and
-          work. That curiosity grew into a career spanning embedded software,
-          developer tooling, agile delivery, and product design—with
-          particularly formative chapters at ASML and Lightyear in the
-          Netherlands.
-        </p>
-        <p>
-          Today, I bring that same energy into business automation and AI:
-          understand the real bottleneck, design the right workflow, and deliver
-          something that feels simple, solid, and genuinely valuable in daily
-          operations.
-        </p>
+        <h2>{copy.howIWorkTitle}</h2>
+        {copy.howIWork.map((paragraph) => <p>{paragraph}</p>)}
       </article>
 
       <article class="story-card story-card--profile">
-        <h2>At a glance</h2>
+        <h2>{copy.profileTitle}</h2>
         <ul class="fact-list">
           {
-            profileFacts.map((fact) => (
+            copy.profileFacts.map((fact) => (
               <li>
                 <span class="symbol-badge" aria-hidden="true">
                   {fact.symbol}
@@ -128,16 +55,16 @@ const interests = [
           }
         </ul>
         <a class="cta-link" href={linkedinUrl} target="_blank" rel="noreferrer"
-          >View LinkedIn</a
+          >{copy.profileLink}</a
         >
       </article>
     </section>
 
     <section class="highlights" aria-labelledby="strengths-title">
-      <h2 id="strengths-title">What I bring to a project</h2>
+      <h2 id="strengths-title">{copy.strengthsTitle}</h2>
       <div class="highlight-grid">
         {
-          highlights.map((item) => (
+          copy.highlights.map((item) => (
             <article class="highlight-card">
               <div class="highlight-symbol" aria-hidden="true">
                 {item.symbol}
@@ -152,10 +79,10 @@ const interests = [
 
     <section class="journey" aria-labelledby="journey-title">
       <div class="journey-card">
-        <h2 id="journey-title">A short career journey</h2>
+        <h2 id="journey-title">{copy.journeyTitle}</h2>
         <div class="timeline">
           {
-            timeline.map((item) => (
+            copy.timeline.map((item) => (
               <article class="timeline-item">
                 <p class="timeline-period">{item.period}</p>
                 <h3>{item.role}</h3>
@@ -169,30 +96,19 @@ const interests = [
 
     <section class="focus" aria-labelledby="focus-title">
       <div class="focus-card">
-        <h2 id="focus-title">What matters most to me</h2>
-        <p>
-          I believe technology should create meaningful impact in the world.
-          That means reducing friction, making work more human, and helping
-          people focus on what truly matters instead of getting buried in manual
-          processes.
-        </p>
+        <h2 id="focus-title">{copy.focusTitle}</h2>
+        <p>{copy.focusText}</p>
       </div>
     </section>
 
     <section class="personal" aria-labelledby="personal-title">
       <article class="story-card">
-        <h2 id="personal-title">Beyond work</h2>
-        <p>
-          Outside of client work, I enjoy staying in shape, playing football,
-          thinking about entrepreneurship, and exploring ideas around space
-          engineering and robotics. They all connect back to the same
-          motivation: keep learning, keep building, and keep aiming for work
-          that matters.
-        </p>
+        <h2 id="personal-title">{copy.personalTitle}</h2>
+        <p>{copy.personalText}</p>
         <ul class="interest-list">
-          {interests.map((interest) => <li>{interest}</li>)}
+          {copy.interests.map((interest) => <li>{interest}</li>)}
         </ul>
-        <a class="text-link" href={contactUrl}>Want to connect?</a>
+        <a class="text-link" href={contactUrl}>{copy.personalLink}</a>
       </article>
     </section>
   </div>

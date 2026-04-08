@@ -1,10 +1,23 @@
 ---
 import { withBase } from "../lib/withBase";
+import {
+  buildPageHref,
+  defaultLocale,
+  getCurrentLocaleMode,
+  localeMeta,
+  locales,
+  navCopy,
+  normalizePath,
+  type Locale,
+  type PageKey,
+} from "../lib/i18n";
 
 interface Props {
   title: string;
   description?: string;
   image?: string;
+  locale?: Locale;
+  pageKey?: PageKey;
 }
 
 const base = import.meta.env.BASE_URL;
@@ -12,27 +25,59 @@ const {
   title,
   description = "Automation Architect helping small businesses simplify operations with AI, automation, and practical software solutions.",
   image = withBase(base, "images/og-preview.png"),
+  locale = defaultLocale,
+  pageKey = "home",
 } = Astro.props;
-const homeUrl = withBase(base);
-const projectsUrl = withBase(base, "projects/");
-const aboutUrl = withBase(base, "about/");
-const contactUrl = withBase(base, "contact/");
+
 const logoUrl = withBase(base, "images/logo_with_name.png");
+const siteUrl = Astro.site ?? new URL("https://aleutheris.com");
 const currentPath = Astro.url.pathname;
-const siteUrl = Astro.site ?? new URL("https://brandpage.consulting");
-const canonicalUrl = new URL(currentPath, siteUrl).toString();
+const { useExplicitEnglish } = getCurrentLocaleMode(currentPath, base);
+const navLabels = navCopy[locale];
+
+const homeUrl = buildPageHref(base, "home", locale, {
+  forcePrefix: useExplicitEnglish,
+});
+const projectsUrl = buildPageHref(base, "projects", locale, {
+  forcePrefix: useExplicitEnglish,
+});
+const aboutUrl = buildPageHref(base, "about", locale, {
+  forcePrefix: useExplicitEnglish,
+});
+const reviewsUrl = buildPageHref(base, "reviews", locale, {
+  forcePrefix: useExplicitEnglish,
+});
+const contactUrl = buildPageHref(base, "contact", locale, {
+  forcePrefix: useExplicitEnglish,
+});
+
+const canonicalUrl = new URL(
+  buildPageHref(base, pageKey, locale, {
+    forcePrefix: locale !== defaultLocale,
+  }),
+  siteUrl,
+).toString();
+const alternateLinks = locales.map((item) => ({
+  locale: item,
+  href: new URL(
+    buildPageHref(base, pageKey, item, { forcePrefix: item !== defaultLocale }),
+    siteUrl,
+  ).toString(),
+}));
+const languageLinks = locales.map((item) => ({
+  code: item,
+  href: buildPageHref(base, pageKey, item, {
+    forcePrefix: item !== defaultLocale || useExplicitEnglish,
+  }),
+  label: localeMeta[item].label,
+  name: localeMeta[item].name,
+  isCurrent: item === locale,
+}));
 const ogImageUrl = new URL(image, siteUrl).toString();
 const pageTitle =
-  title === "Home"
-    ? "António Eleutério | Automation Architect & AI Solutions"
+  pageKey === "home"
+    ? `António Eleutério | ${navLabels.siteTagline}`
     : `${title} | António Eleutério`;
-
-function normalizePath(path: string) {
-  if (!path) return "/";
-
-  const withTrailingSlash = path.endsWith("/") ? path : `${path}/`;
-  return withTrailingSlash.replace(/\/+/g, "/");
-}
 
 function isActivePath(path: string) {
   return normalizePath(currentPath) === normalizePath(path);
@@ -40,7 +85,7 @@ function isActivePath(path: string) {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,6 +93,12 @@ function isActivePath(path: string) {
     <meta name="description" content={description} />
     <meta name="robots" content="index,follow" />
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="x-default" href={alternateLinks[0].href} />
+    {
+      alternateLinks.map((link) => (
+        <link rel="alternate" hreflang={link.locale} href={link.href} />
+      ))
+    }
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="António Eleutério" />
     <meta property="og:title" content={pageTitle} />
@@ -56,7 +107,17 @@ function isActivePath(path: string) {
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={localeMeta[locale].ogLocale} />
+    {
+      locales
+        .filter((item) => item !== locale)
+        .map((item) => (
+          <meta
+            property="og:locale:alternate"
+            content={localeMeta[item].ogLocale}
+          />
+        ))
+    }
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
@@ -154,26 +215,49 @@ function isActivePath(path: string) {
         <a href={homeUrl} class="nav-brand">
           <img src={logoUrl} alt="" class="logo" />
         </a>
-        <div class="nav-links">
-          <a
-            href={homeUrl}
-            aria-current={isActivePath(homeUrl) ? "page" : undefined}>Home</a
-          >
-          <a
-            href={projectsUrl}
-            aria-current={isActivePath(projectsUrl) ? "page" : undefined}
-            >Projects</a
-          >
-          <a
-            href={aboutUrl}
-            aria-current={isActivePath(aboutUrl) ? "page" : undefined}
-            >About Me</a
-          >
-          <a
-            href={contactUrl}
-            aria-current={isActivePath(contactUrl) ? "page" : undefined}
-            >Contact</a
-          >
+        <div class="nav-tools">
+          <div class="nav-links">
+            <a
+              href={homeUrl}
+              aria-current={isActivePath(homeUrl) ? "page" : undefined}
+              >{navLabels.home}</a
+            >
+            <a
+              href={projectsUrl}
+              aria-current={isActivePath(projectsUrl) ? "page" : undefined}
+              >{navLabels.projects}</a
+            >
+            <a
+              href={aboutUrl}
+              aria-current={isActivePath(aboutUrl) ? "page" : undefined}
+              >{navLabels.about}</a
+            >
+            <a
+              href={reviewsUrl}
+              aria-current={isActivePath(reviewsUrl) ? "page" : undefined}
+              >{navLabels.reviews}</a
+            >
+            <a
+              href={contactUrl}
+              aria-current={isActivePath(contactUrl) ? "page" : undefined}
+              >{navLabels.contact}</a
+            >
+          </div>
+          <div class="language-switcher" aria-label={navLabels.language}>
+            {
+              languageLinks.map((item) => (
+                <a
+                  href={item.href}
+                  lang={item.code}
+                  hreflang={item.code}
+                  title={item.name}
+                  aria-current={item.isCurrent ? "true" : undefined}
+                >
+                  {item.label}
+                </a>
+              ))
+            }
+          </div>
         </div>
       </nav>
     </header>
@@ -182,10 +266,7 @@ function isActivePath(path: string) {
     </main>
     <footer>
       <div class="wrap">
-        <p>
-          &copy; {new Date().getFullYear()} &middot; Automation Architect &amp; AI
-          Solutions
-        </p>
+        <p>&copy; {new Date().getFullYear()} &middot; {navLabels.footer}</p>
       </div>
     </footer>
     <style>
@@ -218,10 +299,18 @@ function isActivePath(path: string) {
         width: auto;
       }
 
+      .nav-tools {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-left: auto;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
       .nav-links {
         display: flex;
         gap: 0.15rem;
-        margin-left: auto;
       }
 
       .nav-links a {
@@ -245,6 +334,40 @@ function isActivePath(path: string) {
 
       .nav-links a[aria-current="page"] {
         box-shadow: inset 0 0 0 1px rgba(20, 184, 166, 0.28);
+      }
+
+      .language-switcher {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.2rem;
+        padding: 0.2rem;
+        border: 1px solid var(--stroke);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .language-switcher a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2rem;
+        min-height: 1.9rem;
+        padding: 0 0.45rem;
+        border-radius: 999px;
+        font-size: 0.74rem;
+        font-weight: 700;
+        color: var(--muted);
+        transition:
+          background var(--transition),
+          color var(--transition);
+      }
+
+      .language-switcher a:hover,
+      .language-switcher a:focus-visible,
+      .language-switcher a[aria-current="true"] {
+        background: var(--brand-glow);
+        color: var(--brand-dark);
+        outline: none;
       }
 
       main {
@@ -273,13 +396,24 @@ function isActivePath(path: string) {
           height: 1.6rem;
         }
 
+        .nav-tools {
+          gap: 0.45rem;
+        }
+
         .nav-links {
           gap: 0;
+          flex-wrap: wrap;
+          justify-content: flex-end;
         }
 
         .nav-links a {
           padding: 0.35rem 0.45rem;
           font-size: 0.84rem;
+        }
+
+        .language-switcher {
+          width: 100%;
+          justify-content: flex-end;
         }
       }
     </style>

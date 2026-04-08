@@ -14,7 +14,7 @@ All accepted design decisions must be stored as standalone ADR files under `.git
 - [ADR-260003.md](adr/ADR-260003.md) | ADR-260003 | Accepted | Extension via feature-local seams.
 - [ADR-260004.md](adr/ADR-260004.md) | ADR-260004 | Accepted | Accessible active-state indication for primary navigation.
 - [ADR-260005.md](adr/ADR-260005.md) | ADR-260005 | Accepted | Prevent cross-page layout shift caused by inconsistent scrollbar presence.
-- [ADR-260006.md](adr/ADR-260006.md) | ADR-260006 | Proposed | Add multilingual support through static shared components, translation dictionaries, and language-prefixed routes.
+- [ADR-260006.md](adr/ADR-260006.md) | ADR-260006 | Accepted | Add multilingual support through static shared components, translation dictionaries, and language-prefixed routes.
 
 ## Process Rule
 

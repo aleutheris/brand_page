@@ -29,7 +29,7 @@ User-outcome-oriented backlog for planned and in-progress work.
 - FR-005 | Modernize layout and technology-forward visual style | Priority: High | Item: `backlog-items/BI-260005.md`
 - FR-006 | Highlight active top-level page in navigation | Priority: Medium | Item: `backlog-items/BI-260006.md`
 - FR-007 | Prevent scrollbar-induced page shift between routes | Priority: Medium | Item: `backlog-items/BI-260007.md`
-- FR-009 | Deliver multilingual site experience for English, Dutch, and Portuguese | Priority: High | Item: `backlog-items/BI-260009.md` | Phase 2 refinement
+- FR-009 | Deliver multilingual site experience for English, Dutch, and Portuguese | Priority: High | Item: `backlog-items/BI-260009.md`
 - QR-001 | Enforce CI quality gate baseline | Priority: High | Item: `backlog-items/BI-260101.md`
 - OR-001 | Automate GitHub Pages deployment | Priority: High | Item: `backlog-items/BI-260201.md`
 - CR-001 | Enforce contract change approval workflow | Priority: Medium | Item: `backlog-items/BI-260301.md`

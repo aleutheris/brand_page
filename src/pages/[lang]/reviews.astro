@@ -1,26 +1,45 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import { withBase } from "../lib/withBase";
+import {
+  buildPageHref,
+  getLocaleOrThrow,
+  getLocaleStaticPaths,
+} from "../../lib/i18n";
+import { getCopy } from "../../lib/siteCopy";
 
+export function getStaticPaths() {
+  return getLocaleStaticPaths();
+}
+
+const locale = getLocaleOrThrow(Astro.params.lang);
+const copy = getCopy(locale).reviews;
 const base = import.meta.env.BASE_URL;
-const contactUrl = withBase(base, "contact/");
+const contactUrl = buildPageHref(base, "contact", locale);
 
 const reviews = (await getCollection("reviews"))
   .sort((a, b) => a.data.order - b.data.order)
-  .map(({ id, data }) => ({ id, ...data }));
+  .map(({ id, data }) => {
+    const translated = copy.entries[id as keyof typeof copy.entries] ?? {};
+    return {
+      id,
+      ...data,
+      ...translated,
+    };
+  });
 ---
 
-<BaseLayout title="Reviews" locale="en" pageKey="reviews">
+<BaseLayout
+  title={copy.title}
+  description={copy.description}
+  locale={locale}
+  pageKey="reviews"
+>
   <div class="page-header">
     <div class="wrap">
-      <p class="eyebrow">Client Feedback</p>
-      <h1 id="reviews-title">What clients say about working together</h1>
-      <p class="header-desc">
-        These are real outcomes shared by clients after delivery. Social proof
-        matters, and these results represent the kind of practical impact I aim
-        for in every engagement.
-      </p>
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h1 id="reviews-title">{copy.heading}</h1>
+      <p class="header-desc">{copy.headerDesc}</p>
     </div>
   </div>
 
@@ -47,12 +66,9 @@ const reviews = (await getCollection("reviews"))
 
     <section class="cta" aria-label="Contact call to action">
       <div class="cta-card">
-        <h2>Ready to get results like these?</h2>
-        <p>
-          A short discovery call is all it takes to map your biggest automation
-          opportunity and identify a practical next step.
-        </p>
-        <a href={contactUrl}>Start the conversation</a>
+        <h2>{copy.ctaTitle}</h2>
+        <p>{copy.ctaText}</p>
+        <a href={contactUrl}>{copy.ctaLink}</a>
       </div>
     </section>
   </div>
