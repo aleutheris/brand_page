@@ -8,7 +8,7 @@ export const siteCopy = {
         "Automation Architect helping small businesses simplify repetitive work with AI, automation, and practical software systems.",
       eyebrow: "Automation Architect & AI Solutions",
       heading:
-        "I help small businesses automate repetitive work so their teams can focus on what matters most.",
+        "I help small businesses automate repetitive work so their teams can focus on what matters most",
       intro:
         "I am an Automation Architect and software engineer focused on AI, automation, and practical software solutions for small business teams. I spot the manual work, design the right system, and build tools your team can actually use day to day.",
       heroSignals: [
@@ -63,7 +63,7 @@ export const siteCopy = {
       description:
         "Learn more about António Eleutério—Automation Architect, software engineer, and builder of practical AI and automation solutions.",
       eyebrow: "About me",
-      heading: "I care deeply about building systems that make work better.",
+      heading: "I care deeply about building systems that make work better",
       headerDesc:
         "I'm António Eleutério, an Automation Architect and software engineer based in the Netherlands. With a Master's in Electrical and Computer Engineering and a background across software, embedded systems, and product delivery, I help turn complexity into clear, useful solutions.",
       howIWorkTitle: "How I work",
@@ -241,7 +241,7 @@ export const siteCopy = {
         "Automation Architect die kleine bedrijven helpt repetitief werk te vereenvoudigen met AI, automatisering en praktische softwaresystemen.",
       eyebrow: "Automation Architect & AI-oplossingen",
       heading:
-        "Ik help kleine bedrijven repetitief werk te automatiseren, zodat hun teams zich kunnen richten op wat echt telt.",
+        "Ik help kleine bedrijven repetitief werk te automatiseren, zodat hun teams zich kunnen richten op wat echt telt",
       intro:
         "Ik ben een Automation Architect en software engineer, gespecialiseerd in AI, automatisering en praktische softwareoplossingen voor kleine teams. Ik herken het handmatige werk, ontwerp de juiste aanpak en bouw tools die je team echt dagelijks kan gebruiken.",
       heroSignals: [
@@ -296,7 +296,7 @@ export const siteCopy = {
       description:
         "Meer over António Eleutério—Automation Architect, software engineer en bouwer van praktische AI- en automatiseringsoplossingen.",
       eyebrow: "Over mij",
-      heading: "Ik geef veel om systemen bouwen die werk echt beter maken.",
+      heading: "Ik geef veel om systemen bouwen die werk echt beter maken",
       headerDesc:
         "Ik ben António Eleutério, een Automation Architect en software engineer gevestigd in Nederland. Met een master in Electrical and Computer Engineering en een achtergrond in software, embedded systemen en product delivery help ik complexiteit om te zetten in heldere, bruikbare oplossingen.",
       howIWorkTitle: "Hoe ik werk",
@@ -477,7 +477,7 @@ export const siteCopy = {
         "Arquiteto de Automação que ajuda pequenas empresas a simplificar trabalho repetitivo com IA, automação e sistemas de software práticos.",
       eyebrow: "Arquiteto de Automação & Soluções de IA",
       heading:
-        "Ajudo pequenas empresas a automatizar trabalho repetitivo para que as equipas se possam focar no que realmente importa.",
+        "Ajudo pequenas empresas a automatizar trabalho repetitivo para que as equipas se possam focar no que realmente importa",
       intro:
         "Sou Arquiteto de Automação e engenheiro de software, focado em IA, automação e soluções de software práticas para pequenas equipas. Identifico o trabalho manual, desenho o sistema certo e construo ferramentas que a tua equipa consegue usar no dia a dia.",
       heroSignals: [
@@ -534,12 +534,12 @@ export const siteCopy = {
         "Saiba mais sobre António Eleutério—Arquiteto de Automação, engenheiro de software e criador de soluções práticas de IA e automação.",
       eyebrow: "Sobre mim",
       heading:
-        "Importo-me genuinamente em construir sistemas que melhoram a forma como se trabalha.",
+        "Importo-me genuinamente em construir sistemas que melhoram a forma como se trabalha",
       headerDesc:
-        "Sou António Eleutério, Arquiteto de Automação e engenheiro de software a viver nos Países Baixos. Com um mestrado em Engenharia Eletrotécnica e de Computadores e experiência em software, sistemas embebidos e entrega de produto, ajudo a transformar complexidade em soluções claras e úteis.",
+        "Chamo-me António Eleutério, Arquiteto de Automação e engenheiro de software a viver nos Países Baixos. Com um mestrado em Engenharia Eletrotécnica e de Computadores e experiência em software, sistemas embebidos e entrega de produto, ajudo a transformar complexidade em soluções claras e úteis.",
       howIWorkTitle: "Como trabalho",
       howIWork: [
-        "Desde criança que sou fascinado por automação, robótica e pela ideia de que uma boa engenharia pode melhorar a forma como as pessoas vivem e trabalham. Essa curiosidade transformou-se numa carreira em software embebido, developer tooling, agile delivery e product design — com capítulos especialmente marcantes na ASML e na Lightyear, nos Países Baixos.",
+        "Desde criança que sou fascinado por automação, robótica e pela ideia de que uma boa engenharia pode melhorar a forma como as pessoas vivem e trabalham. Essa curiosidade transformou-se numa carreira em software embebido, developer tooling, agile delivery e product design, com capítulos especialmente marcantes na ASML e na Lightyear, nos Países Baixos.",
         "Hoje levo essa mesma energia para automação empresarial e IA: perceber o verdadeiro bloqueio, desenhar o workflow certo e entregar algo simples, sólido e realmente valioso para a operação diária.",
       ],
       profileTitle: "Resumo rápido",
@@ -576,7 +576,7 @@ export const siteCopy = {
           period: "Mai 2024 – Hoje · quase 2 anos",
           role: "Founder & Automation Architect · Aleutheris",
           summary:
-            "Ajudo empresas a simplificar operações com automação e IA, ao mesmo tempo que construo produtos de ponta a ponta — desde perceber o bottleneck até desenhar workflows e entregar sistemas realmente úteis.",
+            "Ajudo empresas a simplificar operações com automação e IA, ao mesmo tempo que construo produtos de ponta a ponta, desde perceber o bottleneck até desenhar workflows e entregar sistemas realmente úteis.",
         },
         {
           period: "Abr 2023 – Mai 2024 · 1 ano",
@@ -600,7 +600,7 @@ export const siteCopy = {
           period: "2011 – 2017 · Portugal",
           role: "Consultoria, engenharia de dados e ensino",
           summary:
-            "No início da carreira trabalhei em sistemas ETL e big data, software engineering e apoio ao ensino universitário — construindo a base analítica e de comunicação que continuo a trazer para os projetos.",
+            "No início da carreira trabalhei em sistemas ETL e big data, software engineering e apoio ao ensino universitário, construindo a base analítica e de comunicação que continuo a trazer para os projetos.",
         },
       ],
       focusTitle: "O que mais importa para mim",
