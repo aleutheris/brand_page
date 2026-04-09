@@ -523,7 +523,8 @@ export const siteCopy = {
           text: "Construir algo fiável, útil e pronto para apoiar o trabalho diário com menos tarefas repetitivas.",
         },
       ],
-      highlightTitle: "Processo claro. Sistemas úteis. Menos trabalho desnecessário.",
+      highlightTitle:
+        "Processo claro. Sistemas úteis. Menos trabalho desnecessário.",
       highlightText:
         "Se partes do teu negócio parecem confusas, repetitivas ou demasiado manuais, posso ajudar a simplificá-las e a criar uma solução que funcione melhor todos os dias.",
     },

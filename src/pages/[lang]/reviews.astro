@@ -2,7 +2,11 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { getCopy } from "../../lib/siteCopy";
-import { getLocaleOrThrow, getLocaleStaticPaths, buildPageHref } from "../../lib/i18n";
+import {
+  getLocaleOrThrow,
+  getLocaleStaticPaths,
+  buildPageHref,
+} from "../../lib/i18n";
 
 export function getStaticPaths() {
   return getLocaleStaticPaths();
