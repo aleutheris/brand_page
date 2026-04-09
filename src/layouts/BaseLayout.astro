@@ -44,9 +44,6 @@ const projectsUrl = buildPageHref(base, "projects", locale, {
 const aboutUrl = buildPageHref(base, "about", locale, {
   forcePrefix: useExplicitEnglish,
 });
-const reviewsUrl = buildPageHref(base, "reviews", locale, {
-  forcePrefix: useExplicitEnglish,
-});
 const contactUrl = buildPageHref(base, "contact", locale, {
   forcePrefix: useExplicitEnglish,
 });
@@ -235,11 +232,6 @@ function isActivePath(path: string) {
               >{navLabels.about}</a
             >
             <a
-              href={reviewsUrl}
-              aria-current={isActivePath(reviewsUrl) ? "page" : undefined}
-              >{navLabels.reviews}</a
-            >
-            <a
               href={contactUrl}
               aria-current={isActivePath(contactUrl) ? "page" : undefined}
               >{navLabels.contact}</a
@@ -296,11 +288,6 @@ function isActivePath(path: string) {
               href={aboutUrl}
               aria-current={isActivePath(aboutUrl) ? "page" : undefined}
               >{navLabels.about}</a
-            >
-            <a
-              href={reviewsUrl}
-              aria-current={isActivePath(reviewsUrl) ? "page" : undefined}
-              >{navLabels.reviews}</a
             >
             <a
               href={contactUrl}

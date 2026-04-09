@@ -21,7 +21,6 @@ export const navCopy: Record<
     home: string;
     projects: string;
     about: string;
-    reviews: string;
     contact: string;
     language: string;
     siteTagline: string;
@@ -32,7 +31,6 @@ export const navCopy: Record<
     home: "Home",
     projects: "Projects",
     about: "About Me",
-    reviews: "Reviews",
     contact: "Contact",
     language: "Language",
     siteTagline: "Automation Architect & AI Solutions",
@@ -42,7 +40,6 @@ export const navCopy: Record<
     home: "Home",
     projects: "Projecten",
     about: "Over mij",
-    reviews: "Reviews",
     contact: "Contact",
     language: "Taal",
     siteTagline: "Automation Architect & AI-oplossingen",
@@ -52,7 +49,6 @@ export const navCopy: Record<
     home: "Início",
     projects: "Projetos",
     about: "Sobre mim",
-    reviews: "Recomendações",
     contact: "Contacto",
     language: "Idioma",
     siteTagline: "Arquiteto de Automação & Soluções de IA",

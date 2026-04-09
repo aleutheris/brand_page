@@ -228,18 +228,6 @@ export const siteCopy = {
       heading: "What clients say about working together",
       headerDesc:
         "These are real outcomes shared by clients after delivery. Social proof matters, and these results represent the kind of practical impact I aim for in every engagement.",
-      entries: {
-        "sarah-m": {
-          reviewText:
-            "The intake automation alone saved our team several hours every week. The work was scoped clearly, delivered on time, and the system has run without issues since day one.",
-          projectRef: "Intake and Triage Automation",
-        },
-        "david-r": {
-          reviewText:
-            "Our reporting used to be a mess of disconnected spreadsheets. Now we have a single pipeline that gives leadership clean summaries every week. Made a real difference in how fast we can act on information.",
-          projectRef: "Operations Reporting Pipeline Refresh",
-        },
-      },
       ctaTitle: "Ready to get results like these?",
       ctaText:
         "A short discovery call is all it takes to map your biggest automation opportunity and identify a practical next step.",
@@ -476,18 +464,6 @@ export const siteCopy = {
       heading: "Wat klanten zeggen over samenwerken",
       headerDesc:
         "Dit zijn echte resultaten die klanten na oplevering hebben gedeeld. Social proof telt, en deze uitkomsten laten het soort praktische impact zien waar ik in elke samenwerking naar streef.",
-      entries: {
-        "sarah-m": {
-          reviewText:
-            "Alleen al de intake-automatisering bespaarde ons team elke week meerdere uren. Het werk was duidelijk afgebakend, op tijd opgeleverd en het systeem draait sinds dag één zonder problemen.",
-          projectRef: "Intake- en triage-automatisering",
-        },
-        "david-r": {
-          reviewText:
-            "Onze rapportage was vroeger een wirwar van losse spreadsheets. Nu hebben we één pipeline die het management elke week heldere samenvattingen geeft. Dat heeft echt verschil gemaakt in hoe snel we kunnen handelen.",
-          projectRef: "Vernieuwing operations reporting pipeline",
-        },
-      },
       ctaTitle: "Klaar voor vergelijkbare resultaten?",
       ctaText:
         "Een korte discovery call is vaak genoeg om je grootste automatiseringskans in kaart te brengen en een praktische volgende stap te bepalen.",
@@ -547,7 +523,7 @@ export const siteCopy = {
           text: "Construir algo fiável, útil e pronto para apoiar o trabalho diário com menos tarefas repetitivas.",
         },
       ],
-      highlightTitle: "Processo claro. Sistemas úteis. Menos trabalho chato.",
+      highlightTitle: "Processo claro. Sistemas úteis. Menos trabalho desnecessário.",
       highlightText:
         "Se partes do teu negócio parecem confusas, repetitivas ou demasiado manuais, posso ajudar a simplificá-las e a criar uma solução que funcione melhor todos os dias.",
     },
@@ -725,18 +701,6 @@ export const siteCopy = {
       heading: "O que os clientes dizem sobre trabalhar comigo",
       headerDesc:
         "Estes são resultados reais partilhados por clientes após a entrega. Prova social importa, e estes testemunhos representam o tipo de impacto prático que procuro criar em cada colaboração.",
-      entries: {
-        "sarah-m": {
-          reviewText:
-            "Só a automação do intake já poupou várias horas por semana à nossa equipa. O trabalho foi bem definido, entregue a tempo e o sistema funciona sem problemas desde o primeiro dia.",
-          projectRef: "Automação de intake e triagem",
-        },
-        "david-r": {
-          reviewText:
-            "O nosso reporting era uma confusão de folhas de cálculo desconectadas. Agora temos um único pipeline que dá à liderança resumos claros todas as semanas. Fez mesmo diferença na rapidez com que conseguimos agir com base na informação.",
-          projectRef: "Renovação do pipeline de reporting operacional",
-        },
-      },
       ctaTitle: "Pronto para resultados como estes?",
       ctaText:
         "Uma curta discovery call é suficiente para mapear a tua maior oportunidade de automação e identificar um próximo passo prático.",
