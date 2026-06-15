@@ -143,8 +143,11 @@ function isActivePath(path: string) {
       src="https://www.googletagmanager.com/gtag/js?id=G-WBJ5KPZCDW"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(...args) {
-        window.dataLayer.push(args);
+      // gtag MUST push the `arguments` object (not an array) — gtag.js only
+      // recognizes arguments-objects as commands. Using `...args`/push(args)
+      // silently breaks data collection.
+      function gtag() {
+        window.dataLayer.push(arguments);
       }
       gtag("js", new Date());
       gtag("config", "G-WBJ5KPZCDW");
