@@ -147,6 +147,7 @@ function isActivePath(path: string) {
       // recognizes arguments-objects as commands. Using `...args`/push(args)
       // silently breaks data collection.
       function gtag() {
+        // eslint-disable-next-line prefer-rest-params
         window.dataLayer.push(arguments);
       }
       gtag("js", new Date());
